@@ -12,6 +12,7 @@
     <title>Ecommerce</title>
 </head>
 
+
 <body>
     <a href="registration.php">register</a> <br>
     <a href="login.php">login</a>
