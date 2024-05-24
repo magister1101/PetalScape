@@ -14,6 +14,8 @@
 </head>
 
 <body>
+    <label for="haveAnAccount">Have an Account?</label>
+    <a href="login.php">Sign Up</a>
     <form action="functions/func_registration.php" method="post" enctype="multipart/form-data"> <br>
         <label for="firstName">First Name:</label> <br>
         <input type="text" name="firstName" id="firstName" required> <br>
