@@ -1,0 +1,9 @@
+ <a href="registration.php">register</a> <br>
+    <a href="login.php">login</a>
+    <?php
+    if (isset($_SESSION['id'])){
+    ?>
+    <a href="functions/func_logout.php">logout</a>
+    <?php
+    }
+    ?>

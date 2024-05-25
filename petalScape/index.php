@@ -13,15 +13,21 @@
 </head>
 
 <body>
-    <a href="registration.php">register</a> <br>
-    <a href="login.php">login</a>
-    <?php
-    if (isset($_SESSION['id'])){
-    ?>
-    <a href="functions/func_logout.php">logout</a>
-    <?php
-    }
-    ?>
+    <div class="navbar">
+        <p style="display: inline">[LOGO]</p>
+        <a href="index.php">Home</a>
+        <a href="catalogue.php">Explore</a>
+        <form action="functions/func_search.php" method="post" style="display: inline">
+            <input type="submit" value="search">
+            <input type="text" name="search_value">
+        </form>
+        <a href="cart.php">cart</a>
+        <a href="profile.php">profile</a>
+    </div>
+
+    <a href="catalogue.php">Shop Now</a>
+
+    <h1>Our Top Selling</h1> <a href="catalogue.php">See more</a>
 </body>
 
 
