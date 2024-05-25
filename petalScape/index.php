@@ -13,17 +13,19 @@
 </head>
 
 <body>
-    <div class="navbar">
-        <p style="display: inline">[LOGO]</p>
-        <a href="index.php">Home</a>
-        <a href="catalogue.php">Explore</a>
-        <form action="functions/func_search.php" method="post" style="display: inline">
-            <input type="submit" value="search">
-            <input type="text" name="search_value">
-        </form>
-        <a href="cart.php">cart</a>
-        <a href="profile.php">profile</a>
-    </div>
+    <?php
+    include 'constants/navbar.php'
+    ?>
+    
+    <a href="registration.php">register</a> <br>
+    <a href="login.php">login</a>
+    <?php
+    if (isset($_SESSION['id'])) {
+    ?>
+        <a href="functions/func_logout.php">logout</a>
+    <?php
+    }
+    ?>
 
     <a href="catalogue.php">Shop Now</a>
 

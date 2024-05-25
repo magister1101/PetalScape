@@ -21,11 +21,11 @@ if (isset($_SESSION['id'])) { //checks if the user is already logged in by check
 
     if ($inputPassword == $password) {
         $_SESSION['id'] = $id; //puts the ID into a universal session that checks every page if it is logged in or not
-        echo "<script>location.href='../index.php'</script>"; //proceeds to admin page
+        echo "<script>location.href='../index.php'</script>"; //proceeds to main page
 
     } else {
 
         echo "<script>alert('email or password incorrect')</script>";
-        echo "<script>location.href='../index.php'</script>";
+        echo "<script>location.href='../login.php'</script>";
     }
 }
