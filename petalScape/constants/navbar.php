@@ -17,7 +17,7 @@
             </div>
 
             <div class="navbar-img">
-                    <a href="cart.php"><img class="cart" src="img/cart.png"></a>
+                    <a href="myCart_Customer.php"><img class="cart" src="img/cart.png"></a>
                     <a href="functions/func_profile.php"><img src="img/profile.png"></a>
                 </div>
 </div>
