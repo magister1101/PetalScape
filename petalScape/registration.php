@@ -24,7 +24,7 @@
             <div class="sign-up-top-right">
                 <label for="haveAnAccount">Have an Account?</label>
                 <br>
-                <a href="login.php">Sign Up</a>
+                <a href="login.php">Sign in</a>
             </div>
         </div>
         <div class="sign-in-text">
