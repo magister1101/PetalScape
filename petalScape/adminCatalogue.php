@@ -31,8 +31,10 @@
             <input type="text" name="name" id="name">  <br>
             <label for="description">Description</label>
             <input type="text" name="description" id="description">  <br>
+            <label for="price">Price</label>
+            <input type="number" id="price" name="price" min="1" max="100000">  <br>
             <label for="quantity">Quantity</label>
-            <input type="number" id="quantity" name="quantity" min="1" max="100">  <br>
+            <input type="number" id="quantity" name="quantity" min="1" max="100000">  <br>
             <label for="category">Category</label>
             <select name="category" id="category">
                 <?php
@@ -47,9 +49,18 @@
             <input type="file" name="image" id="image">  <br>
 
             <input type="submit" value="Add Item">
+
         </form>
     </div>
 
+
+    <?php
+    if (isset($_SESSION['id'])){
+    ?>
+    <a href="functions/func_logout.php">logout</a>
+    <?php
+    }
+    ?>
 
 </body>
 
