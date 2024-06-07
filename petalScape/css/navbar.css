@@ -1,26 +1,26 @@
-*{
+* {
     padding: 0;
     margin: 0;
 }
 
- .navbar-container{
- 
+.navbar-container {
+
     display: flex;
-   padding-top:4%;
+    padding-top: 4%;
     height: 10vh;
     width: 95%;
 }
 
-.navbar{
+.navbar {
     padding: 2%;
     word-spacing: 50px;
     margin-left: 15%;
-  
+
     width: 30%;
-    display:block;
+    display: block;
 }
 
-.navbar a{
+.navbar a {
     text-decoration: none;
     font-size: 18px;
     font-family: "Poppins", sans-serif;
@@ -30,28 +30,29 @@
 }
 
 
-.navbar a:hover{
+.navbar a:hover {
     color: #F5706D;
 }
+
 .search-bar {
     padding: 1%;
     margin-left: 25%;
     word-spacing: 20px;
 
     width: 20%;
-   
+
 }
 
- 
-.search-btn{
+
+.search-btn {
     height: 35px;
     width: 80%;
     border-style: none;
     border-radius: 20px;
-  
+
 }
 
-.navbar-img{
+.navbar-img {
     width: 5%;
     padding-top: 1%;
     padding-bottom: 1%;
@@ -59,9 +60,7 @@
     word-spacing: 10px;
 }
 
-.navbar-img img{
+.navbar-img img {
     height: 35px;
     width: 35px;
 }
-
- 
