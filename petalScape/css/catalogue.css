@@ -191,6 +191,7 @@
 .price-select{
     margin-left: 15%;
     width: 15%;
+    margin-bottom: 10%;
     height: auto;
 }
 
@@ -242,7 +243,6 @@
 
 .item-list img{
     align-self: center;
-    height: 270px;
     width: 250px;
     margin-top: -35%;
 }
@@ -481,4 +481,15 @@
     font-weight: 500;
     font-style: normal;
     color: #B7B7B7;  
+}
+.cartImg{
+
+    text-align: right;
+
+}
+
+.cartImg input{
+    width: 20%;
+    height: 20%;
+    
 }
