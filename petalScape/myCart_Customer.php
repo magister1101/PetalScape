@@ -68,6 +68,7 @@
                     <p>Quantity</p>
                     <p>Price</p>
                     <p>Subtotal</p>
+                    <p>Edit</p>
 
                     <?php
                     $id = $_SESSION['id'];
@@ -90,7 +91,14 @@
                             <img src="uploads/<?php echo $productRow['img'] ?>">
                             <p><?php echo $productQuantity ?></p>
                             <p><?php echo $productRow['price'] ?></p>
-                            <p>XXXX</p>
+                            <?php
+                            $subTotal = $productRow['price']*$productQuantity;
+                            ?>
+                            <p><?php echo $subTotal ?></p>
+                            <form action="functions/func_removeToCart.php" method="post">
+                                <input type="text" name="removeId" id="removeId" value="<?php echo $row['productId']?>" hidden>
+                                <input type="submit" value="remove">
+                            </form>
                         </div>
 
                 <?php
