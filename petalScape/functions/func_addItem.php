@@ -1,9 +1,13 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['id'])) {
+    echo "<script>location.href='../login.php'</script>";
+}
+
+include_once 'functions/func_adminCheck.php';
+
 include '../constants/config.php';
-
-
 
 $name = addslashes($_POST['name']);
 $description = addslashes($_POST['description']);

@@ -83,19 +83,25 @@
                 <div class="category-select">
                     <label>CATEGORIES</label><br>
                     <select name="category" id="category">
+                        <option value="allCategories">All Categories</option>
                         <?php
                         while ($categoryRows = mysqli_fetch_assoc($categoryResults)) {
-                        ?>
-                            <option value="<?php echo $categoryRows['name']; ?>"><?php echo $categoryRows['name']; ?> </option>
-                        <?php
+                            echo '<option value="' . $categoryRows['name'] . '">' . $categoryRows['name'] . '</option>';
                         }
                         ?>
                     </select>
                 </div>
+
                 <div class="price-select">
                     <label>PRICE:</label><br>
                     <select name="price" id="price">
                         <option value="allPrices">all Prices</option>
+                        <option value="0-100">0 - 100 PHP</option>
+                        <option value="101-200">101 - 200 PHP</option>
+                        <option value="201-300">201 - 300 PHP</option>
+                        <option value="301-400">301 - 400 PHP</option>
+                        <option value="401-500">401 - 500 PHP</option>
+                        <option value="1000+">1000+ PHP</option>
                     </select>
                 </div>
             </div>
@@ -120,15 +126,15 @@
                         <span style="width:a;height:auto;margin-top:3%;font-weight:500;font-family:Poppins,sans-serif;font-size:12px;">
                             <p><?php echo $description ?></p>
                         </span>
-                        <div class="price-addBtn">
+                        <div class="price-addBtn" data-category="<?php echo $category ?>"">
 
-                            <form action="functions/func_addToCart.php" method="post">
-                                <p><?php echo $price ?> PHP</p>
-                                <input type="text" name="itemId" id="itemId" value="<?php echo $id ?>" hidden>
-                                <input type="text" name="quantity" id="quantity" value="1" hidden>
-                                <div class="cartImg">
-                                    <input type="image" src="img/cart.png" value="add to cart">
-                                </div>
+                            <form action=" functions/func_addToCart.php" method="post">
+                            <p><?php echo $price ?> PHP</p>
+                            <input type="text" name="itemId" id="itemId" value="<?php echo $id ?>" hidden>
+                            <input type="text" name="quantity" id="quantity" value="1" hidden>
+                            <div class="cartImg">
+                                <input type="image" src="img/cart.png" value="add to cart">
+                            </div>
                             </form>
                         </div>
                     </div>
@@ -147,7 +153,45 @@
 
 
     </div>
+    <script>
+        document.getElementById('price').addEventListener('change', updateFilters);
+        document.getElementById('category').addEventListener('change', updateFilters);
 
+        function updateFilters() {
+            var selectedPriceRange = document.getElementById('price').value;
+            var selectedCategory = document.getElementById('category').value;
+
+            var items = document.querySelectorAll('.item-list .price-addBtn');
+
+            items.forEach(function(item) {
+                var category = item.getAttribute('data-category');
+                var price = parseInt(item.querySelector('p').textContent);
+
+                var showItem = false;
+                if ((selectedCategory === 'allCategories' || selectedCategory === category) &&
+                    (selectedPriceRange === 'allPrices' || isPriceInRange(price, selectedPriceRange))) {
+                    showItem = true;
+                }
+
+                if (showItem) {
+                    item.closest('.item-list').style.display = 'block';
+                } else {
+                    item.closest('.item-list').style.display = 'none';
+                }
+            });
+        }
+
+        function isPriceInRange(price, range) {
+            if (range === '1000+') {
+                return price >= 1000;
+            } else {
+                var minMax = range.split('-');
+                var minPrice = parseInt(minMax[0]);
+                var maxPrice = parseInt(minMax[1]);
+                return price >= minPrice && price <= maxPrice;
+            }
+        }
+    </script>
 </body>
 <footer>
     <hr>

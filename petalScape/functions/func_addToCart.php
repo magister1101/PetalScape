@@ -1,9 +1,12 @@
 <?php
 session_start();
+error_reporting(0);
 
 if (!isset($_SESSION['id'])) {
     echo "<script>location.href='../login.php'</script>";
 }
+
+include_once 'functions/func_adminCheck.php';
 
 include '../constants/config.php';
 

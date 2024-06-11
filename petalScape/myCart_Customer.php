@@ -79,6 +79,8 @@
                 </div>
                 <hr>
                 <?php
+                $allItemsTotal = 0;
+                $shippingFee = 0;
                 while ($row = mysqli_fetch_assoc($result)) {
 
                     $productId = $row['productId'];
@@ -92,11 +94,12 @@
                             <p><?php echo $productQuantity ?></p>
                             <p><?php echo $productRow['price'] ?></p>
                             <?php
-                            $subTotal = $productRow['price']*$productQuantity;
+                            $subTotal = $productRow['price'] * $productQuantity;
+                            $allItemsTotal = $allItemsTotal + $subTotal;
                             ?>
                             <p><?php echo $subTotal ?></p>
                             <form action="functions/func_removeToCart.php" method="post">
-                                <input type="text" name="removeId" id="removeId" value="<?php echo $row['productId']?>" hidden>
+                                <input type="text" name="removeId" id="removeId" value="<?php echo $row['productId'] ?>" hidden>
                                 <input type="submit" value="remove">
                             </form>
                         </div>
@@ -119,27 +122,27 @@
                     <div class="sub-text">
                         <p>Subtotal:</p>
                         <span style="margin-left:60%" ;>
-                            <p>$1750</p>
+                            <p>₱<?php echo $allItemsTotal ?></p>
                         </span>
                     </div>
                     <hr>
                     <div class="shipping-text">
                         <p>Shipping:</p>
                         <span style="margin-left:60%" ;>
-                            <p>FREE</p>
+                            <p><?php echo $shippingFee ?></p>
                         </span>
                     </div>
                     <hr>
                     <div class="total-text">
                         <p>Total:</p>
                         <span style="margin-left:68%" ;>
-                            <p>$1750</p>
+                            <p class="total-amount">₱<?php echo $allItemsTotal + $shippingFee ?></p>
                         </span>
                     </div>
                     <hr>
 
                     <div class="checkout-btn">
-                        <button>Procced to checkout</button>
+                        <button class="checkout-submit" onclick="location.href = 'checkout.php'">Procced to checkout</button>
                     </div>
                 </div>
             </div>

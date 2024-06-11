@@ -349,9 +349,9 @@
     margin-top: 10%;
 }
 
-.checkout-btn button{
+.checkout-submit{
     height: 50px;
-    width: 65%;
+    width: 120%;
     background-color: #61AE4C;
     color:#FFFFFF;
     border-style: none;

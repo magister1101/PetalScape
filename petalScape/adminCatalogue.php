@@ -25,18 +25,18 @@
     include 'constants/navbar.php'
     ?>
     <br>
-    <div>
+    <div class="addingOfItems">
         <form action="functions/func_addItem.php" method="post" enctype="multipart/form-data">
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name">  <br>
+            <label for="name">Item Name</label>
+            <input type="text" name="name" id="name" required> <br>
             <label for="description">Description</label>
-            <input type="text" name="description" id="description">  <br>
+            <input type="text" name="description" id="description" required> <br>
             <label for="price">Price</label>
-            <input type="number" id="price" name="price" min="1" max="100000">  <br>
+            <input type="number" id="price" name="price" min="1" max="100000" required> <br>
             <label for="quantity">Quantity</label>
-            <input type="number" id="quantity" name="quantity" min="1" max="100000">  <br>
+            <input type="number" id="quantity" name="quantity" min="1" max="100000" required> <br>
             <label for="category">Category</label>
-            <select name="category" id="category">
+            <select name="category" id="category" required>
                 <?php
                 while ($rows = mysqli_fetch_assoc($result)) {
                 ?>
@@ -44,20 +44,28 @@
                 <?php
                 }
                 ?>
-            </select>  <br>
+            </select> <br>
             <label for="photo">Add Image</label>
-            <input type="file" name="image" id="image">  <br>
+            <input type="file" name="image" id="image" required> <br>
 
             <input type="submit" value="Add Item">
 
         </form>
     </div>
+    <br> <!-- remove this, ginamit ko lang para separator sa dalawang tab -->
+    <div class="addingOfCategory">
+        <form action="functions/func_addCategory.php" method="popen">
+            <label for="categoryName">Category Name:</label>
+            <input type="text" name="categoryName" id="categoryName" required> <br>
+            <input type="submit" value="Add Category">
+        </form>
+    </div>
 
 
     <?php
-    if (isset($_SESSION['id'])){
+    if (isset($_SESSION['id'])) {
     ?>
-    <a href="functions/func_logout.php">logout</a>
+        <a href="functions/func_logout.php">logout</a> <!-- for quick logout lang to, di talaga dito nakalagay yan, paki delete nalang pag ni design nyo na -->
     <?php
     }
     ?>
