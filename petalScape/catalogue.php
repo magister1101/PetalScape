@@ -3,7 +3,7 @@
 
 <head>
     <?php
-    #error_reporting(0);
+    error_reporting(0);
     session_start();
     include 'constants/config.php';
     ?>
@@ -15,6 +15,9 @@
     <title>Ecommerce</title>
     <link rel="stylesheet" href="css/catalogue.css">
     <style>
+        *{
+            scroll-behavior: smooth;
+        }
         .header-nav {
             background-image: url("img/bg.png");
             background-repeat: no-repeat;
