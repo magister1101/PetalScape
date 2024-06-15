@@ -15,9 +15,10 @@
     <title>Ecommerce</title>
     <link rel="stylesheet" href="css/catalogue.css">
     <style>
-        *{
+        * {
             scroll-behavior: smooth;
         }
+
         .header-nav {
             background-image: url("img/bg.png");
             background-repeat: no-repeat;
@@ -110,39 +111,78 @@
             </div>
 
             <div class="items-cont">
-
                 <?php
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $img = $row['img'];
-                    $name = $row['name'];
-                    $description = $row['description'];
-                    $price = $row['price'];
-                    $quantity = $row['quantity'];
-                    $category = $row['category'];
-                    $id = $row['id'];
-                ?>
-                    <div class="item-list">
-                        <img src="uploads/<?php echo $img ?>" alt="">
-                        <span style="font-size:23px;font-weight:600;font-family:Poppins,sans-serif;margin-top:7%">
-                            <p><?php echo $name ?></p>
-                        </span>
-                        <span style="width:a;height:auto;margin-top:3%;font-weight:500;font-family:Poppins,sans-serif;font-size:12px;">
-                            <p><?php echo $description ?></p>
-                        </span>
-                        <div class="price-addBtn" data-category="<?php echo $category ?>"">
+                if (isset($_GET['search'])) {
+                    $search_query = $_GET['search'];
+                    $search_query = mysqli_real_escape_string($conn, $search_query);
 
-                            <form action=" functions/func_addToCart.php" method="post">
-                            <p><?php echo $price ?> PHP</p>
-                            <input type="text" name="itemId" id="itemId" value="<?php echo $id ?>" hidden>
-                            <input type="text" name="quantity" id="quantity" value="1" hidden>
-                            <div class="cartImg">
-                                <input type="image" src="img/cart.png" value="add to cart">
-                            </div>
-                            </form>
-                        </div>
-                    </div>
+                    $query = "SELECT * FROM products WHERE name LIKE '%$search_query%' OR description LIKE '%$search_query%'";
+                    $result = $conn->query($query);
 
-                <?php
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            $img = $row['img'];
+                            $name = $row['name'];
+                            $description = $row['description'];
+                            $price = $row['price'];
+                            $quantity = $row['quantity'];
+                            $category = $row['category'];
+                            $id = $row['id'];
+
+                            // Display search results
+                            echo "<div class='item-list'>";
+                            echo "<img src='uploads/$img' alt=''>";
+                            echo "<span style='font-size:23px;font-weight:600;font-family:Poppins,sans-serif;margin-top:7%'>";
+                            echo "<p>$name</p>";
+                            echo "</span>";
+                            echo "<span style='width:a;height:auto;margin-top:3%;font-weight:500;font-family:Poppins,sans-serif;font-size:12px;'>";
+                            echo "<p>$description</p>";
+                            echo "</span>";
+                            echo "<div class='price-addBtn' data-category='$category'>";
+                            echo "<p>$price PHP</p>";
+                            echo "<form action='functions/func_addToCart.php' method='post'>";
+                            echo "<input type='text' name='itemId' id='itemId' value='$id' hidden>";
+                            echo "<input type='text' name='quantity' id='quantity' value='1' hidden>";
+                            echo "<div class='cartImg'>";
+                            echo "<input type='image' src='img/cart.png' value='add to cart'>";
+                            echo "</div>";
+                            echo "</form>";
+                            echo "</div>";
+                            echo "</div>";
+                        }
+                    } else {
+                        echo "No results found";
+                    }
+                } else {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $img = $row['img'];
+                        $name = $row['name'];
+                        $description = $row['description'];
+                        $price = $row['price'];
+                        $quantity = $row['quantity'];
+                        $category = $row['category'];
+                        $id = $row['id'];
+
+                        echo "<div class='item-list'>";
+                        echo "<img src='uploads/$img' alt=''>";
+                        echo "<span style='font-size:23px;font-weight:600;font-family:Poppins,sans-serif;margin-top:7%'>";
+                        echo "<p>$name</p>";
+                        echo "</span>";
+                        echo "<span style='width:a;height:auto;margin-top:3%;font-weight:500;font-family:Poppins,sans-serif;font-size:12px;'>";
+                        echo "<p>$description</p>";
+                        echo "</span>";
+                        echo "<div class='price-addBtn' data-category='$category'>";
+                        echo "<p>$price PHP</p>";
+                        echo "<form action='functions/func_addToCart.php' method='post'>";
+                        echo "<input type='text' name='itemId' id='itemId' value='$id' hidden>";
+                        echo "<input type='text' name='quantity' id='quantity' value='1' hidden>";
+                        echo "<div class='cartImg'>";
+                        echo "<input type='image' src='img/cart.png' value='add to cart'>";
+                        echo "</div>";
+                        echo "</form>";
+                        echo "</div>";
+                        echo "</div>";
+                    }
                 }
                 ?>
                 <div class="backToTopBtn">

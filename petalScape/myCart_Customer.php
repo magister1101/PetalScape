@@ -3,7 +3,7 @@
 
 <head>
     <?php
-    #error_reporting(0);
+    error_reporting(0);
     session_start();
     include 'constants/config.php';
     ?>
@@ -37,10 +37,36 @@
             border: 1px solid #61AE4C;
             opacity: 30%;
         }
+
+        .alert {
+            padding: 15px;
+            background-color: #f44336;
+            /* Red */
+            color: white;
+            margin-bottom: 15px;
+        }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const alertBox = document.querySelector('.alert');
+            if (alertBox) {
+                setTimeout(() => {
+                    alertBox.classList.add('fade-out');
+                }, 5000);
+                setTimeout(() => {
+                    alertBox.remove();
+                }, 5500);
+            }
+        });
+    </script>
 </head>
 
 <body>
+    <?php
+    if ($_GET['message'] == 'no_items') {
+        echo '<div class="alert">No items in cart.</div>';
+    }
+    ?>
     <div class="container">
         <?php
         include 'constants/navbar.php'

@@ -10,9 +10,9 @@
     </div>
 
     <div class="search-bar">
-        <form action="functions/func_search.php" method="post" style="display: inline">
-            <input type="submit" value="search">
-            <input class="search-btn" type="text" name="search_value">
+        <form action="catalogue.php" method="get" style="display: inline">
+            <input class="search-btn" type="text" name="search" placeholder="Search...">
+            <input type="submit" value="Search">
         </form>
     </div>
 
