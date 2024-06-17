@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 session_start();
 
 if (!isset($_SESSION['id'])) {
@@ -15,7 +16,7 @@ $query = "INSERT INTO `category`(`name`) VALUES ('$name')";
 $insert = mysqli_query($conn, $query);
 
 if ($insert) {
-    echo "<script>location.href='../adminCatalogue.php'</script>";
+    echo "<script>location.href='../adminCatalogue.php?msg=category'</script>";
 } else {
     echo "Error: " . mysqli_error($conn);
 }

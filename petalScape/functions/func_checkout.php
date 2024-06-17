@@ -20,6 +20,9 @@ $address = addslashes($_POST['streetAddress'] . ", " . $_POST['city'] . ", " . $
 //payment method
 $modeOfPayment = addslashes($_POST['payment']);
 
+//message
+$message = addslashes($_POST['message']);
+
 //Get cart items for the user
 $query = "SELECT * FROM `cart` WHERE accountId = $id";
 $result = mysqli_query($conn, $query);
@@ -30,7 +33,7 @@ if ($result && mysqli_num_rows($result) > 0) {
         $quantity = $row['quantity'];
 
         //Insert each item as a new row in the orders table
-        $orderQuery = "INSERT INTO `orders`(`accountId`, `productId`, `name`, `quantity`, `email`, `address`, `contactNumber`, `modeOfPayment`, `status`) VALUES ('$id', '$productId', '$name', '$quantity', '$email', '$address', '$number', '$modeOfPayment', 'Pending')";
+        $orderQuery = "INSERT INTO `orders`(`accountId`, `productId`, `name`, `quantity`, `email`, `address`, `contactNumber`, `modeOfPayment`, `message`) VALUES ('$id', '$productId', '$name', '$quantity', '$email', '$address', '$number', '$modeOfPayment', '$message')";
         mysqli_query($conn, $orderQuery);
     }
 

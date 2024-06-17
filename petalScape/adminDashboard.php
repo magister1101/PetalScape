@@ -14,6 +14,9 @@
 </head>
 
 <body>
+    <?php
+    include 'constants/sidebar.php'
+    ?>
     <div class="main-dashboard">
         <div class="revenue"> <!-- place holder lang value nito muna -->
             <p>PHP100,000</p>

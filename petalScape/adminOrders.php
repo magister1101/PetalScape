@@ -22,7 +22,11 @@
 </head>
 
 <body>
+    <?php
+    include 'constants/sidebar.php'
+    ?>
     <div class="recent-orders">
+        <h2>Order List</h2>
 
         <table>
 
@@ -48,15 +52,15 @@
                         <td><?php echo $quantity ?></td>
                         <td><?php if ($status == 0) {
                             ?><p>Waiting For Payment</p><?php
-                        } else if($status == 1){
-                            ?><p>Payment Accepted/To be ship</p><?php
-                        } else if($status == 2){
-                            ?><p>Out for delivery</p><?php
-                        } else if($status == 3){
-                            ?><p>Order Complete</p><?php
-                        } else{
-                            ?><p>Error</p><?php
-                        }?></td>
+                                                    } else if ($status == 1) {
+                                                        ?><p>Payment Accepted/To be ship</p><?php
+                                                            } else if ($status == 2) {
+                                                                ?><p>Out for delivery</p><?php
+                                                            } else if ($status == 3) {
+                                                        ?><p>Order Complete</p><?php
+                                                            } else {
+                                                    ?><p>Error</p><?php
+                                                            } ?></td>
 
                         <td><a href="orderPage.php?orderId=<?php echo $orderId ?>">edit</a></td>
                     </tr>
