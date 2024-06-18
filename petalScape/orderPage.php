@@ -8,9 +8,13 @@
     include 'constants/config.php';
     include_once 'functions/func_adminCheck.php'; //for admin pages only, checks if the user is an admin
     ?>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecommerce</title>
+    <link rel="stylesheet" href="css/orderpage.css">
 
     <style>
         .alert {
@@ -19,7 +23,15 @@
             color: white;
             margin-bottom: 15px;
         }
+        .admin-bg{
+            background-image: url('img/admin-bg.png');
+            background-repeat: no-repeat;
+            height: 100vh;
+            width: 25%;
+        }
+        
     </style>
+  
 
 
     <?php
@@ -59,108 +71,135 @@
 </head>
 
 <body>
-    <?php
-    if ($_GET['message'] == 'changed') {
-        echo '<div class="alert">Status Changed</div>';
-    }
-    ?>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const alertBox = document.querySelector('.alert');
-            if (alertBox) {
-                setTimeout(() => {
-                    alertBox.classList.add('fade-out');
-                }, 5000);
-                setTimeout(() => {
-                    alertBox.remove();
-                }, 5500);
+<div class="main-container">    
+        <div class="admin-bg">
+            <?php
+            include 'constants/sidebar.php'
+            ?>
+        </div>   
+    <div class="order-detail-main-cont">
+            <?php
+            if ($_GET['message'] == 'changed') {
+                echo '<div class="alert">Status Changed</div>';
             }
-        });
-    </script>
-    <h1>Order Details</h1>
+            ?>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    const alertBox = document.querySelector('.alert');
+                    if (alertBox) {
+                        setTimeout(() => {
+                            alertBox.classList.add('fade-out');
+                        }, 5000);
+                        setTimeout(() => {
+                            alertBox.remove();
+                        }, 5500);
+                    }
+                });
+            </script>
 
-    <div>
-        <div class="order-id">
-            <h2>
-                Order ID: #<?php echo $orderId ?>
-                <span class="status"> <?php if ($status == 0) { ?>Waiting For Payment<?php } else if ($status == 1) { ?>Payment Accepted/To be ship<?php } else if ($status == 2) { ?>Out for delivery<?php } else if ($status == 3) { ?><p>Order Complete<?php } else { ?>Error<?php } ?></span>
-            </h2>
-
-            <form action="functions/func_updateOrderStatus.php" method="post">
-                <input type="hidden" name="orderId" value="<?php echo $orderId; ?>">
-                <label for="status">Status:</label>
-                <select name="status" id="status">
-                    <option value="0" <?php if ($status == 0) echo 'selected'; ?>>Waiting For Payment</option>
-                    <option value="1" <?php if ($status == 1) echo 'selected'; ?>>Payment Accepted/To be Shipped</option>
-                    <option value="2" <?php if ($status == 2) echo 'selected'; ?>>Out for Delivery</option>
-                    <option value="3" <?php if ($status == 3) echo 'selected'; ?>>Order Complete</option>
-                </select>
-                <button type="submit">Update Status</button>
-            </form>
-        </div>
-
-        <div class="customer-info">
-            <h2>Customer</h2>
-            <p>Full Name: <?php echo $name ?></p>
-            <p>Email: <?php echo $email ?></p>
-            <p>Phone: <?php echo $contactNumber ?></p>
-        </div>
-
-        <div class="order-info">
-            <h2>Order Info</h2>
-            <p>Payment Method: <?php if ($mop == 'cod') { ?>Cash On Delivery<?php } else { ?> Gcash Payment<?php } ?></p>
-            <p>Status: <?php if ($status == 0) { ?>Waiting For Payment<?php } else if ($status == 1) { ?>Payment Accepted/To be ship<?php } else if ($status == 2) { ?>Out for delivery<?php } else if ($status == 3) { ?>
-            <p>Order Complete<?php } else { ?>Error<?php } ?></p>
-        </div>
-
-        <div class="delivery-info">
-            <h2>Deliver to</h2>
-            <p>Address: <?php echo $address ?></p>
-        </div>
-
-        <div class="message">
-            <h2>Note</h2>
-            <p><?php echo $message ?></p>
-        </div>
-
-
-        <div class="product-info">
-
-            <div class="product-info-table">
-                <table>
-                    <tr>
-                        <th>Product Name</th>
-                        <th>Proudct Id</th>
-                        <th>Quantity</th>
-                        <th>Total</th>
-                    </tr>
-                    <?php
-                    $productNameInfo = $productRow['name'];
-                    $productIdInfo = $productRow['id'];
-                    $productPriceInfo = $productRow['price'];
-
-                    $total = $productPriceInfo * $quantity;
-                    ?>
-
-                    <tr>
-                        <td><?php echo $productNameInfo ?></td>
-                        <td><?php echo $productIdInfo ?></td>
-                        <td><?php echo $quantity ?></td>
-                        <td><?php echo $total ?></td>
-                    </tr>
-                </table>
+            <div class="order-details-txt">
+                <h1>Order Details</h1>
+            </div>
+            
+              
+            <div class="order-details-cont">
+                <div class="order-id">
+                    <h2>
+                        Order ID: #<?php echo $orderId ?>
+                        <span class="status"> <?php if ($status == 0) { ?>Waiting For Payment<?php } else if ($status == 1) { ?>Payment Accepted/To be ship<?php } else if ($status == 2) { ?>Out for delivery<?php } else if ($status == 3) { ?><p>Order Complete<?php } else { ?>Error<?php } ?></span>
+                    </h2>
+                </div>
+                <div class="update-status-btn">
+                    <form action="functions/func_updateOrderStatus.php" method="post">
+                        <input type="hidden" name="orderId" value="<?php echo $orderId; ?>">
+                        <label for="status">Status:</label>
+                        <select name="status" id="status">
+                            <option value="0" <?php if ($status == 0) echo 'selected'; ?>>Waiting For Payment</option>
+                            <option value="1" <?php if ($status == 1) echo 'selected'; ?>>Payment Accepted/To be Shipped</option>
+                            <option value="2" <?php if ($status == 2) echo 'selected'; ?>>Out for Delivery</option>
+                            <option value="3" <?php if ($status == 3) echo 'selected'; ?>>Order Complete</option>
+                        </select>
+                        <button type="submit">Update Status</button>
+                    </form>
+                </div>
+                    
+            
+                <div class="customer-order-delivery-info">
+                    <div class="customer-info">
+                            <h2>Customer</h2>
+                            <p>Full Name: <?php echo $name ?></p>
+                            <p>Email: <?php echo $email ?></p>
+                            <p>Phone: <?php echo $contactNumber ?></p>
+                    </div>
+                    <div class="order-info">
+                            <h2>Order Info</h2>
+                            <p>Payment Method: <?php if ($mop == 'cod') { ?>Cash On Delivery<?php } else { ?> Gcash Payment<?php } ?></p>
+                            <p>Status: <?php if ($status == 0) { ?>Waiting For Payment<?php } else if ($status == 1) { ?>Payment Accepted/To be ship<?php } else if ($status == 2) { ?>Out for delivery<?php } else if ($status == 3) { ?>
+                            <p>Order Complete<?php } else { ?>Error<?php } ?></p>
+                    </div>
+                    <div class="delivery-info">
+                            <h2>Deliver to</h2>
+                            <p>Address: <?php echo $address ?></p>
+                    </div>
+                </div>
+                    
+                <div class="message">
+                    <h2>Note</h2>   
+                    <p><?php echo $message ?></p>
+                </div>
             </div>
 
-            <div class="total-info">
-                <p>Subtotal: ₱<?php echo $total ?></p>
-                <p>Discount: ₱0</p>
-                <p>Shipping Fee: ₱0</p>
-                <p>Total: <?php echo $total ?></p>
+            <div class="product-total-cont">
+                <div class="product-txt">
+                    <h2>Products</h2>
+                    <hr>
+                </div>
+                   
+                    <div>
+                        <table class="product-info-table"> 
+                      
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Proudct Id</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            
+                            </tr>
+                           
+                         
+                            <?php
+                            $productNameInfo = $productRow['name'];
+                            $productIdInfo = $productRow['id'];
+                            $productPriceInfo = $productRow['price'];
+
+                            $total = $productPriceInfo * $quantity;
+                            ?>
+                 
+                            <tr class="product-info-cont">      
+                           
+                                <td><?php echo $productNameInfo ?></td>
+                                
+                                <td><?php echo $productIdInfo ?></td>
+                                <td><?php echo $quantity ?></td>
+                                <td><?php echo $total ?></td>
+                            </tr>
+                           
+                        </table>
+
+                    </div>
+                   
+                    <div class="total-info-cont">
+                        <div class="total-info">
+                            <p>Subtotal:<span style="float: right;"> ₱<?php echo $total ?></span></p>
+                            <p>Discount: <span style="float: right;">₱0</p></span>
+                            <p>Shipping Fee:<span style="float: right;"> ₱0</p></span>
+                           <p class="total-txt">Total:<span style="float: right;"><?php echo $total ?></span></p>
+                        </div>
+                        
+                    </div>
             </div>
-        </div>
-
-
     </div>
+</div>
 </body>
 
 </html>
