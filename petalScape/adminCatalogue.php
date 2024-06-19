@@ -52,7 +52,7 @@
                 <label for="description">Product Description</label>
                <textarea type="text" name="description" id="description" required></textarea> <br>
             </div>
-            <hr>
+
             <div class="price-quantity-cont">
                 <div class="price-cont">
                     <label for="price">Product Price</label>
@@ -63,7 +63,7 @@
                     <input type="number" id="quantity" name="quantity" min="1" max="100000" required> <br>
                 </div>     
             </div>  
-            <hr>  
+
             <div class="category-cont">
                 <h2>Categories</h2>
                 <label for="category">Add to Category</label>
@@ -79,9 +79,8 @@
                         ?>
                     </select> <br>
             </div>
-            <hr> 
             <div class="photo-file-submit-cont">
-                <label for="photo">Add Image</label>
+                <label for="photo">Image</label>
                 <div class="file-btn-cont">
                     <input type="file" name="image" id="image" required> <br>
                 </div>

@@ -473,6 +473,8 @@
     border-radius: 10px;
     width: auto;
     height: 60px;
+    display: flex;
+    align-items: center;
 }
 
 .products-txt{
@@ -515,7 +517,6 @@
 
 .productItem img{
     width: 110px;
-    height: 110px;
     align-self: center;
 }
 
