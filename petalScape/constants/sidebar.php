@@ -13,6 +13,7 @@
             <a href="adminDashboard.php">Dashboard</a>
             <a href="adminOrders.php">Orders</a>
             <a href="adminCatalogue.php">Product</a>
+            <a href="functions/func_logout.php">Logout</a>
         </div>
         
         

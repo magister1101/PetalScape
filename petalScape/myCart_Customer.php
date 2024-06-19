@@ -40,10 +40,11 @@
 
         .alert {
             padding: 15px;
-            background-color: #f44336;
-            /* Red */
             color: white;
             margin-bottom: 15px;
+            position: absolute;
+            width: 100%;
+            z-index: 2;
         }
     </style>
     <script>
@@ -52,10 +53,10 @@
             if (alertBox) {
                 setTimeout(() => {
                     alertBox.classList.add('fade-out');
-                }, 5000);
+                }, 3000);
                 setTimeout(() => {
                     alertBox.remove();
-                }, 5500);
+                }, 3500);
             }
         });
     </script>
@@ -64,7 +65,9 @@
 <body>
     <?php
     if ($_GET['message'] == 'no_items') {
-        echo '<div class="alert">No items in cart.</div>';
+        echo '<div class="alert" style="background-color: #f44336;">No items in cart.</div>';
+    } else if ($_GET['message'] == 'checkout') {
+        echo '<div class="alert" style="background-color: #61ae4c;">Item Ordered.</div>';
     }
     ?>
     <div class="container">

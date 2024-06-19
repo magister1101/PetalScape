@@ -23,15 +23,8 @@
             color: white;
             margin-bottom: 15px;
         }
-        .admin-bg{
-            background-image: url('img/admin-bg.png');
-            background-repeat: no-repeat;
-            height: 100vh;
-            width: 25%;
-        }
-        
     </style>
-  
+
 
 
     <?php
@@ -49,6 +42,7 @@
 
     //order info
     $mop = $rows['modeOfPayment'];
+    $date = date('Y-m-d', strtotime($rows['orderDate']));
     $status = $rows['status'];
 
     //delivery info
@@ -71,13 +65,13 @@
 </head>
 
 <body>
-<div class="main-container">    
+    <div class="main-container">
         <div class="admin-bg">
             <?php
             include 'constants/sidebar.php'
             ?>
-        </div>   
-    <div class="order-detail-main-cont">
+        </div>
+        <div class="order-detail-main-cont">
             <?php
             if ($_GET['message'] == 'changed') {
                 echo '<div class="alert">Status Changed</div>';
@@ -100,13 +94,13 @@
             <div class="order-details-txt">
                 <h1>Order Details</h1>
             </div>
-            
-              
+
+
             <div class="order-details-cont">
                 <div class="order-id">
                     <h2>
                         Order ID: #<?php echo $orderId ?>
-                        <span class="status"> <?php if ($status == 0) { ?>Waiting For Payment<?php } else if ($status == 1) { ?>Payment Accepted/To be ship<?php } else if ($status == 2) { ?>Out for delivery<?php } else if ($status == 3) { ?><p>Order Complete<?php } else { ?>Error<?php } ?></span>
+                        <span class="status"> <?php if ($status == 0) { ?>Waiting For Payment<?php } else if ($status == 1) { ?>Payment Accepted/To be ship<?php } else if ($status == 2) { ?>Out for delivery<?php } else if ($status == 3) { ?><p>Order Complete<?php } else if ($status == 4) { ?>Cancelled<?php } else { ?>Error<?php } ?></span>
                     </h2>
                 </div>
                 <div class="update-status-btn">
@@ -118,33 +112,35 @@
                             <option value="1" <?php if ($status == 1) echo 'selected'; ?>>Payment Accepted/To be Shipped</option>
                             <option value="2" <?php if ($status == 2) echo 'selected'; ?>>Out for Delivery</option>
                             <option value="3" <?php if ($status == 3) echo 'selected'; ?>>Order Complete</option>
+                            <option value="4" <?php if ($status == 4) echo 'selected'; ?>>Cancel Order</option>
                         </select>
                         <button type="submit">Update Status</button>
                     </form>
                 </div>
-                    
-            
+
+
                 <div class="customer-order-delivery-info">
                     <div class="customer-info">
-                            <h2>Customer</h2>
-                            <p>Full Name: <?php echo $name ?></p>
-                            <p>Email: <?php echo $email ?></p>
-                            <p>Phone: <?php echo $contactNumber ?></p>
+                        <h2>Customer</h2>
+                        <p>Full Name: <?php echo $name ?></p>
+                        <p>Email: <?php echo $email ?></p>
+                        <p>Phone: <?php echo $contactNumber ?></p>
                     </div>
                     <div class="order-info">
-                            <h2>Order Info</h2>
-                            <p>Payment Method: <?php if ($mop == 'cod') { ?>Cash On Delivery<?php } else { ?> Gcash Payment<?php } ?></p>
-                            <p>Status: <?php if ($status == 0) { ?>Waiting For Payment<?php } else if ($status == 1) { ?>Payment Accepted/To be ship<?php } else if ($status == 2) { ?>Out for delivery<?php } else if ($status == 3) { ?>
-                            <p>Order Complete<?php } else { ?>Error<?php } ?></p>
+                        <h2>Order Info</h2>
+                        <p>Payment Method: <?php if ($mop == 'cod') { ?>Cash On Delivery<?php } else { ?> Gcash Payment<?php } ?></p>
+                        <p>Order Date: <?php echo $date ?></p>
+                        <p>Status: <?php if ($status == 0) { ?>Waiting For Payment<?php } else if ($status == 1) { ?>Payment Accepted/To be ship<?php } else if ($status == 2) { ?>Out for delivery<?php } else if ($status == 3) { ?>
+                        <p>Order Complete<?php } else { ?>Error<?php } ?></p>
                     </div>
                     <div class="delivery-info">
-                            <h2>Deliver to</h2>
-                            <p>Address: <?php echo $address ?></p>
+                        <h2>Deliver to</h2>
+                        <p>Address: <?php echo $address ?></p>
                     </div>
                 </div>
-                    
+
                 <div class="message">
-                    <h2>Note</h2>   
+                    <h2>Note</h2>
                     <p><?php echo $message ?></p>
                 </div>
             </div>
@@ -154,52 +150,52 @@
                     <h2>Products</h2>
                     <hr>
                 </div>
-                   
-                    <div>
-                        <table class="product-info-table"> 
-                      
-                            <tr>
-                                <th>Product Name</th>
-                                <th>Proudct Id</th>
-                                <th>Quantity</th>
-                                <th>Total</th>
-                            
-                            </tr>
-                           
-                         
-                            <?php
-                            $productNameInfo = $productRow['name'];
-                            $productIdInfo = $productRow['id'];
-                            $productPriceInfo = $productRow['price'];
 
-                            $total = $productPriceInfo * $quantity;
-                            ?>
-                 
-                            <tr class="product-info-cont">      
-                           
-                                <td><?php echo $productNameInfo ?></td>
-                                
-                                <td><?php echo $productIdInfo ?></td>
-                                <td><?php echo $quantity ?></td>
-                                <td><?php echo $total ?></td>
-                            </tr>
-                           
-                        </table>
+                <div>
+                    <table class="product-info-table">
 
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Proudct Id</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+
+                        </tr>
+
+
+                        <?php
+                        $productNameInfo = $productRow['name'];
+                        $productIdInfo = $productRow['id'];
+                        $productPriceInfo = $productRow['price'];
+
+                        $total = $productPriceInfo * $quantity;
+                        ?>
+
+                        <tr class="product-info-cont">
+
+                            <td><?php echo $productNameInfo ?></td>
+
+                            <td><?php echo $productIdInfo ?></td>
+                            <td><?php echo $quantity ?></td>
+                            <td><?php echo $total ?></td>
+                        </tr>
+
+                    </table>
+
+                </div>
+
+                <div class="total-info-cont">
+                    <div class="total-info">
+                        <p>Subtotal:<span style="float: right;"> ₱<?php echo $total ?></span></p>
+                        <p>Discount: <span style="float: right;">₱0</p></span>
+                        <p>Shipping Fee:<span style="float: right;"> ₱0</p></span>
+                        <p class="total-txt">Total:<span style="float: right;"><?php echo $total ?></span></p>
                     </div>
-                   
-                    <div class="total-info-cont">
-                        <div class="total-info">
-                            <p>Subtotal:<span style="float: right;"> ₱<?php echo $total ?></span></p>
-                            <p>Discount: <span style="float: right;">₱0</p></span>
-                            <p>Shipping Fee:<span style="float: right;"> ₱0</p></span>
-                           <p class="total-txt">Total:<span style="float: right;"><?php echo $total ?></span></p>
-                        </div>
-                        
-                    </div>
+
+                </div>
             </div>
+        </div>
     </div>
-</div>
 </body>
 
 </html>

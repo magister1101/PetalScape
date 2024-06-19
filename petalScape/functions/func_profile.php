@@ -12,9 +12,9 @@ if (isset($_SESSION['id'])) {
     $adminCheck = $rows["isAdmin"];
 
     if ($adminCheck == 1) {
-        echo "<script>location.href='../adminCatalogue.php'</script>";
+        echo "<script>location.href='../adminDashboard.php'</script>";
     } else {
-        echo "<script>location.href='../profile.php'</script>";
+        echo "<script>location.href='../profile.php?section=manage-account'</script>";
     }
 }
 else {
