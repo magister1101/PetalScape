@@ -300,6 +300,14 @@ td {
   color: #5A607F;
 }
 
+.tbl-recent-order td a{
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  color: #5A607F;
+  text-decoration: none;
+}
+
 .recent-order-details-cont {
   display: flex;
   justify-content: space-around;

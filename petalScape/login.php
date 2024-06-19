@@ -60,8 +60,8 @@
 
                 <form action="functions/func_login.php" method="post">
                     <div class="sign-in-username">
-                        <label for="userName">Enter your Email</label> <br>
-                        <input type="text" name="userName" id="userName" required placeholder="Email Address"> <br>
+                        <label for="userName">Enter your Username</label> <br>
+                        <input type="text" name="userName" id="userName" required placeholder="Username"> <br>
                     </div>
                     <div class="sign-in-password">
                         <label for="userName">Enter your Password</label> <br>
