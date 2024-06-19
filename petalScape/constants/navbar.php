@@ -10,9 +10,9 @@
     </div>
 
     <div class="search-bar">
-        <form action="catalogue.php" method="get" style="display: inline">
+        <form action="catalogue.php" method="get">
             <input class="search-btn" type="text" name="search" placeholder="Search...">
-            <input type="submit" value="Search">
+            <input class="search-btn-img" type="image" src="img/search-ico.png" style="width: 10%;">
         </form>
     </div>
 

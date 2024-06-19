@@ -8,14 +8,13 @@
     display: flex;
     padding-top: 4%;
     height: 10vh;
-    width: 95%;
+    width: 100%;
 }
 
 .navbar {
     padding: 2%;
     word-spacing: 50px;
     margin-left: 15%;
-
     width: 30%;
     display: block;
 }
@@ -37,21 +36,20 @@
 }
 
 .search-bar {
-    padding: 1%;
     margin-left: 25%;
-    word-spacing: 20px;
-
+    /* word-spacing: 20px; */
     width: 20%;
-
+    
 }
-
-
 .search-btn {
-    height: 35px;
-    width: 80%;
+    height: 5vh;
+    width: 60%;
     border-style: none;
     border-radius: 20px;
 
+}
+.search-btn-img{
+    
 }
 
 .navbar-img {
