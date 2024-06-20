@@ -151,7 +151,7 @@
     color: #303030;
 }
 
-.fname-lname-uname-pass-email-num-cont input{
+.fname-lname-uname-pass-email-num-cont input, .address-propic-cont input{
     height: 35px;
     margin-top: 1%;
     font-size: 15px;
@@ -163,6 +163,9 @@
     padding-left: 2%;
     border-style: none;
 
+}
+.address-propic-cont input{
+  word-break: break-word;
 }
 
 .address-propic-cont{

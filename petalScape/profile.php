@@ -27,17 +27,19 @@
     <title>Ecommerce</title>
     <link rel="stylesheet" href="css/Profile.css">
     <style>
-         .nav-header {
+        .nav-header {
             background-image: url('img/bg2-header.png');
             background-repeat: no-repeat;
             background-size: cover;
             position: relative;
             height: 260px;
         }
-        .main-container{
+
+        .main-container {
             overflow: hidden;
         }
-        .profile-content-cont{
+
+        .profile-content-cont {
             background-image: url('img/profile-bg.png');
             background-repeat: no-repeat;
             background-size: 115%;
@@ -47,7 +49,7 @@
             height: 900px;
             margin-top: -2%;
         }
-        
+
         footer {
             background-image: url('img/bg.png');
             background-repeat: no-repeat;
@@ -65,57 +67,76 @@
 </head>
 
 <body>
-<div class="main-container">
-    <div class="nav-header">
-        <?php include 'constants/navbar.php'; ?>
-    </div>
-
-    <div class="my-acc-txt">
-        <h1>My Account</h1>
-    </div>
-   
-
-    <div class="profile-content-cont">
-        <div class="profile-info">
-            <div class="img-name-cont">
-                <img src="img/profile-pic.jpg" alt="Profile Picture">
-                <h2><?php echo $name ?></h2>
-            </div>
-            <div class="profile-buttons">
-                <a onclick="window.location.href='profile.php?section=manage-account'"><p>Manage Account</p></a>
-                <a onclick="window.location.href='profile.php?section=view-orders'"><p>View Orders</p></a>
-                <a onclick="window.location.href='functions/func_logout.php'"><p>Logout</p></a>
-            </div>
+    <div class="main-container">
+        <div class="nav-header">
+            <?php include 'constants/navbar.php'; ?>
         </div>
-        <div class="content-section">
-            <?php
-            if (isset($_GET['section'])) {
-                $section = $_GET['section'];
-                switch ($section) {
-                    case 'manage-account':
-                        include 'manage_account.php';
-                        break;
-                    case 'view-orders':
-                        include 'view_orders.php';
-                        break;
-                        // case 'view-wishlist':
-                        //     include 'view_wishlist.php';
-                        //     break;
+
+        <div class="my-acc-txt">
+            <h1>My Account</h1>
+        </div>
+
+
+        <div class="profile-content-cont">
+            <div class="profile-info">
+                <div class="img-name-cont">
+                    <?php
+                    $image = $rows['img'];
+                    if ($image == null) {
+                    ?>
+                        <img src="img/profile-pic.jpg" alt="Profile Picture">
+                    <?php
+                    } else {
+                    ?>
+                        <img src="uploads/<?php echo $rows['img']; ?>" alt="Profile Picture">
+                    <?php
+                    }
+                    ?>
+
+                    <h2><?php echo $name ?></h2>
+                </div>
+                <div class="profile-buttons">
+                    <a onclick="window.location.href='profile.php?section=manage-account'">
+                        <p>Manage Account</p>
+                    </a>
+                    <a onclick="window.location.href='profile.php?section=view-orders'">
+                        <p>View Orders</p>
+                    </a>
+                    <a onclick="window.location.href='functions/func_logout.php'">
+                        <p>Logout</p>
+                    </a>
+                </div>
+            </div>
+            <div class="content-section">
+                <?php
+                if (isset($_GET['section'])) {
+                    $section = $_GET['section'];
+                    switch ($section) {
+                        case 'manage-account':
+                            include 'manage_account.php';
+                            break;
+                        case 'view-orders':
+                            include 'view_orders.php';
+                            break;
+                            // case 'view-wishlist':
+                            //     include 'view_wishlist.php';
+                            //     break;
+                    }
+                } else {
+                    echo "<p>Welcome to your account. Please select an option.</p>";
                 }
-            } else {
-                echo "<p>Welcome to your account. Please select an option.</p>";
-            }
-            ?>
+                ?>
+            </div>
         </div>
+
+        <div class="div"></div>
     </div>
-    
-    <div class="div"></div>
-</div>
 </body>
 <footer>
     <hr>
     <div class="contact-info">
         <div class="phone-info">
+
             <img src="img/phone.png">
             <div class="contact-text">
                 <H1>Contact us</H1>
@@ -165,4 +186,5 @@
         <p>© 2024. Petalscape PH. All Rights Reserved.</p>
     </div>
 </footer>
+
 </html>

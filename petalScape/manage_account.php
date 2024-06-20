@@ -51,7 +51,7 @@
            
             <div class="address-propic-cont">
                 <label for="address">Address</label>
-                <textarea  type="text" name="address" id="address" value="<?php echo $rows['address']; ?>" required></textarea><br>
+                <input  type="text" name="address" id="address" value="<?php echo $rows['address']; ?>" required><br>
 
                 <label for="img">Profile Picture</label>
                 <div class="input-file-profile">
