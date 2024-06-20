@@ -15,14 +15,14 @@
     <title>Ecommerce</title>
     <link rel="stylesheet" href="css/myCart_Customer.css">
     <style>
-        .myCart-header {
+        .nav-header {
             background-image: url('img/bg2-header.png');
             background-repeat: no-repeat;
             background-size: cover;
             position: relative;
             height: 260px;
-            margin-top: -9%;
-            z-index: -1;
+        
+
         }
 
         footer {
@@ -71,11 +71,12 @@
     }
     ?>
     <div class="container">
-        <?php
+        
+        <div class="nav-header">
+            <!-- container with navbar -->
+            <?php
         include 'constants/navbar.php'
         ?>
-        <div class="myCart-header">
-            <!-- container with navbar -->
         </div>
 
         <div class="myCart-container">
@@ -129,7 +130,7 @@
                             <p><?php echo $subTotal ?></p>
                             <form action="functions/func_removeToCart.php" method="post">
                                 <input type="text" name="removeId" id="removeId" value="<?php echo $row['productId'] ?>" hidden>
-                                <input type="submit" value="remove">
+                                <input type="submit" value="remove" style="background-color: transparent;border-style:none;font-family:Poppins,San-serif;font-weight:500;font-size:15px;cursor:pointer;">
                             </form>
                         </div>
 

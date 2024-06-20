@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecommerce</title>
-
+    <link rel="stylesheet" href="css/view-orders.css">
     <?php
 
     $query = "SELECT * FROM `orders`";
@@ -19,44 +19,18 @@
 
     ?>
     <style>
-        .tabs {
-            display: flex;
-            cursor: pointer;
-            padding: 10px;
-        }
-
-        .tab {
-            flex: 1;
-            padding: 10px;
-            text-align: center;
-            background-color: #f1f1f1;
-            border: 1px solid #ccc;
-            margin-right: 2px;
-        }
-
-        .tab.active {
-            background-color: #ccc;
-        }
-
-        .tab-content {
-            display: none;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-top: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
+     
+        
+      
     </style>
 </head>
 
 <body>
-    <div class="main-container">
+    <div class="purchase-history-container">
 
         <div class="admin-orders-cont">
             <div class="order-list-txt">
-                <h2>Order List</h2>
+                <h2>Purchase History</h2>
             </div>
 
             <div class="tabs">
@@ -64,7 +38,7 @@
                 <div class="tab" data-tab="completed-orders">Completed Orders</div>
                 <div class="tab" data-tab="cancelled-orders">Cancelled Orders</div>
             </div>
-
+            <hr>
             <div class="tab-content active" id="active-orders">
                 <h2>Active Orders</h2>
                 <table class="orders">
@@ -76,6 +50,7 @@
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
+                    
                     <?php
                     mysqli_data_seek($result, 0);
                     while ($rows = mysqli_fetch_assoc($result)) {
@@ -195,8 +170,9 @@
             </div>
 
         </div>
+       
     </div>
-
+   
     <script>
         document.querySelectorAll('.tab').forEach(tab => {
             tab.addEventListener('click', () => {

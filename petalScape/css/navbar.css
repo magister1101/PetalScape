@@ -4,7 +4,6 @@
 }
 
 .navbar-container {
-
     display: flex;
     padding-top: 4%;
     height: 10vh;
@@ -14,7 +13,7 @@
 .navbar {
     padding: 2%;
     word-spacing: 50px;
-    margin-left: 15%;
+    margin-left: 10%;
     width: 30%;
     display: block;
 }
@@ -39,25 +38,26 @@
     margin-left: 25%;
     /* word-spacing: 20px; */
     width: 20%;
-    
+    margin-top: 20px;
 }
 .search-btn {
     height: 5vh;
-    width: 60%;
+    width: 50%;
     border-style: none;
     border-radius: 20px;
-
 }
+
+ 
 .search-btn-img{
-    
 }
 
 .navbar-img {
-    width: 5%;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    padding-right: 1%;
-    word-spacing: 10px;
+    width: 6%;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: -40px;
+    display: flex;
+    margin-top: 10px;
 }
 
 .navbar-img img {

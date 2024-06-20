@@ -11,8 +11,8 @@
 
     <div class="search-bar">
         <form action="catalogue.php" method="get">
-            <input class="search-btn" type="text" name="search" placeholder="Search...">
-            <input class="search-btn-img" type="image" src="img/search-ico.png" style="width: 10%;">
+            <input class="search-btn" type="text" name="search" placeholder="Search..." style="padding-left: 25%;">
+            <input class="search-btn-img" type="image" src="img/search-ico.png" style="width: 35px;margin-left:-270px;margin-top:.3%;position:absolute">
         </form>
     </div>
 
