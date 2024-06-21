@@ -52,6 +52,60 @@
             border: 1px solid #61AE4C;
             opacity: 30%;
         }
+
+        .popup {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .popup-content {
+            margin: auto;
+            display: flex;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .popup-content,
+        .close {
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @keyframes zoom {
+            from {
+                transform: scale(0)
+            }
+
+            to {
+                transform: scale(1)
+            }
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
     <?php
 
@@ -164,7 +218,7 @@
                         $id = $row['id'];
 
                         echo "<div class='item-list'>";
-                        echo "<img src='uploads/$img' alt=''>";
+                        echo "<img src='uploads/$img' alt='$name' data-img='uploads/$img' class='clickable-image'>";
                         echo "<span style='font-size:23px;font-weight:600;font-family:Poppins,sans-serif;margin-top:7%'>";
                         echo "<p>$name</p>";
                         echo "</span>";
@@ -217,7 +271,7 @@
                 }
 
                 if (showItem) {
-                    item.closest('.item-list').style.display = 'block';
+                    item.closest('.item-list').style.display = 'flex';
                 } else {
                     item.closest('.item-list').style.display = 'none';
                 }
@@ -235,59 +289,89 @@
             }
         }
     </script>
+    <div id="imagePopup" class="popup">
+        <span class="close">&times;</span>
+        <img class="popup-content" id="popupImg">
+    </div>
+
+
+    <footer>
+        <hr>
+        <div class="contact-info">
+            <div class="phone-info">
+                <img src="img/phone.png">
+                <div class="contact-text">
+                    <H1>Contact us</H1>
+                    <p>0915 670 0925</p>
+                </div>
+
+            </div>
+            <div class="email-info">
+                <img src="img/email.png">
+                <div class="email-text">
+                    <H1>Email us</H1>
+                    <p>petalscape@gmail.com</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="petalscape-info">
+            <div class="footer-logo">
+                <h1>Petalscape</h1>
+                <img src="img/Logo.png">
+
+                <div class="footer-icons">
+                    <p>Get in touch</p>
+                    <img src="img/facebook.png">
+                    <img src="img/insta.png">
+                </div>
+            </div>
+
+            <div class="location-footer">
+                <h1>Location</h1>
+                <p>Bacoor, Cavite <br>Philippines</p>
+                <div class="office-hour-footer">
+                    <h1>Office Hours</h1>
+                    <p>Monday to Saturday<br>8:00am - 6:00pm</p>
+                </div>
+            </div>
+
+            <div class="legal-info-footer">
+                <h1>Legal information</h1>
+                <p>Delivery Information</p>
+                <p>Privacy/ Policy</p>
+                <p>Terms & conditions</p>
+            </div>
+        </div>
+        <hr>
+        <div class="rights-reserved">
+            <p>© 2024. Petalscape PH. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        var popup = document.getElementById('imagePopup');
+        var popupImg = document.getElementById('popupImg');
+        var closeBtn = document.getElementsByClassName('close')[0];
+
+        document.querySelectorAll('.clickable-image').forEach(function(img) {
+            img.addEventListener('click', function() {
+                popup.style.display = 'flex';
+                popupImg.src = this.getAttribute('data-img');
+            });
+        });
+
+        closeBtn.onclick = function() {
+            popup.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == popup) {
+                popup.style.display = 'none';
+            }
+        }
+    </script>
+
 </body>
-<footer>
-    <hr>
-    <div class="contact-info">
-        <div class="phone-info">
-            <img src="img/phone.png">
-            <div class="contact-text">
-                <H1>Contact us</H1>
-                <p>0915 670 0925</p>
-            </div>
-
-        </div>
-        <div class="email-info">
-            <img src="img/email.png">
-            <div class="email-text">
-                <H1>Email us</H1>
-                <p>petalscape@gmail.com</p>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="petalscape-info">
-        <div class="footer-logo">
-            <h1>Petalscape</h1>
-            <img src="img/Logo.png">
-
-            <div class="footer-icons">
-                <p>Get in touch</p>
-                <img src="img/facebook.png">
-                <img src="img/insta.png">
-            </div>
-        </div>
-
-        <div class="location-footer">
-            <h1>Location</h1>
-            <p>Bacoor, Cavite <br>Philippines</p>
-            <div class="office-hour-footer">
-                <h1>Office Hours</h1>
-                <p>Monday to Saturday<br>8:00am - 6:00pm</p>
-            </div>
-        </div>
-
-        <div class="legal-info-footer">
-            <h1>Legal information</h1>
-            <p>Delivery Information</p>
-            <p>Privacy/ Policy</p>
-            <p>Terms & conditions</p>
-        </div>
-    </div>
-    <hr>
-    <div class="rights-reserved">
-        <p>© 2024. Petalscape PH. All Rights Reserved.</p>
-    </div>
-</footer>
 
 </html>
