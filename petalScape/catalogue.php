@@ -77,7 +77,7 @@
         .popup-content,
         .close {
             animation-name: zoom;
-            animation-duration: 0.6s;
+            animation-duration: 0.4s;
         }
 
         @keyframes zoom {
