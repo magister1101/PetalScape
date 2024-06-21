@@ -131,8 +131,7 @@
 
         <div class="div"></div>
     </div>
-</body>
-<footer>
+    <footer>
     <hr>
     <div class="contact-info">
         <div class="phone-info">
@@ -186,5 +185,7 @@
         <p>© 2024. Petalscape PH. All Rights Reserved.</p>
     </div>
 </footer>
+</body>
+
 
 </html>

@@ -130,8 +130,11 @@
                         <h2>Order Info</h2>
                         <p>Payment Method: <?php if ($mop == 'cod') { ?>Cash On Delivery<?php } else { ?> Gcash Payment<?php } ?></p>
                         <p>Order Date: <?php echo $date ?></p>
-                        <p>Status: <?php if ($status == 0) { ?>Waiting For Payment<?php } else if ($status == 1) { ?>Payment Accepted/To be ship<?php } else if ($status == 2) { ?>Out for delivery<?php } else if ($status == 3) { ?>
-                        <p>Order Complete<?php } else { ?>Error<?php } ?></p>
+                        <div class="status-order">
+                            <p>Status:<?php if ($status == 0) { ?>Waiting For Payment<?php } else if ($status == 1) { ?>Payment Accepted/To be ship<?php } else if ($status == 2) { ?>Out for delivery<?php } else if ($status == 3) { ?><br>
+                            <p>Order Complete<?php } else { ?>Error<?php } ?></p>
+                        </div>
+                      
                     </div>
                     <div class="delivery-info">
                         <h2>Deliver to</h2>

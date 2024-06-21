@@ -181,8 +181,7 @@
 
 
     </div>
-</body>
-
+    
 <footer>
     <hr>
     <div class="contact-info">
@@ -236,5 +235,7 @@
         <p>© 2024. Petalscape PH. All Rights Reserved.</p>
     </div>
 </footer>
+</body>
+
 
 </html>
