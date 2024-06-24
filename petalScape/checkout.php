@@ -176,7 +176,7 @@ if (mysqli_num_rows($Result) == 0) {
                 <div id="gcash-upload" style="display: none;">
                     <img src="img/qr.png" alt="" style="height:50vh">
                     <label for="gcashFile">Upload GCASH Payment Screenshot:</label>
-                    <input type="file" name="gcashFile" id="gcashFile" accept="image/*" required>
+                    <input type="file" name="gcashFile" id="gcashFile" accept="image/*">
                 </div>
 
 

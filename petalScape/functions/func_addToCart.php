@@ -27,4 +27,4 @@ if (mysqli_num_rows($checkResult) > 0) {
     $insertResult = mysqli_query($conn, $insertQuery);
 }
 
-echo "<script>location.href='../catalogue.php'</script>";
+echo "<script>location.href='../catalogue.php?message=addToCart'</script>";

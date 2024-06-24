@@ -117,14 +117,35 @@
 
 <body>
 
+
     <div class="header-nav">
         <?php
         include 'constants/navbar.php'
+        ?>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const alertBox = document.querySelector('.alert');
+                if (alertBox) {
+                    setTimeout(() => {
+                        alertBox.classList.add('fade-out');
+                    }, 3000);
+                    setTimeout(() => {
+                        alertBox.remove();
+                    }, 3500);
+                }
+            });
+        </script>
+
+        <?php
+        if ($_GET['message'] == 'addToCart') {
+            echo '<div class="alert" style="background-color: #61ae4c;">Added to cart.</div>';
+        }
         ?>
     </div>
     <div class="circle">
 
     </div>
+
 
     <div class="container">
         <h1>Catalog</h1>
@@ -163,6 +184,7 @@
                     </select>
                 </div>
             </div>
+
 
             <div class="items-cont">
                 <?php

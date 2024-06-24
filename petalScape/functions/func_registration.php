@@ -1,6 +1,7 @@
 <?php
 
-#error_reporting(0);
+error_reporting(0);
+
 include '../constants/config.php';
 
 $userName = addslashes($_POST["userName"]);

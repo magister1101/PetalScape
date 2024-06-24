@@ -60,10 +60,10 @@
                             <label for="price">Product Price</label>
                             <input type="number" id="price" name="price" min="1" max="100000" required> <br>
                         </div>
-                        <div class="quantity-cont">
+                        <!-- <div class="quantity-cont">
                             <label for="quantity">Product Quantity</label>
                             <input type="number" id="quantity" name="quantity" min="1" max="100000" required> <br>
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="category-cont">
