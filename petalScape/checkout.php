@@ -19,6 +19,7 @@ if (mysqli_num_rows($Result) == 0) {
 ?>
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,6 +56,34 @@ if (mysqli_num_rows($Result) == 0) {
         }
     </style>
 
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            var paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+
+            if (paymentMethod === 'gcash') {
+                var gcashFile = document.getElementById('gcashFile').files[0];
+                if (!gcashFile) { 
+                    alert('Please upload a GCASH payment screenshot.');
+                    return;
+                }
+                // Optionally, you can add more validation for file type and size here.
+            }
+            event.target.submit();
+        }
+
+        function toggleGcashUpload() {
+            var paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+            var gcashUpload = document.getElementById('gcash-upload');
+            if (paymentMethod === 'gcash') {
+                gcashUpload.style.display = 'block';
+            } else {
+                gcashUpload.style.display = 'none';
+            }
+        }
+    </script>
+
 </head>
 
 <body>
@@ -75,7 +104,7 @@ if (mysqli_num_rows($Result) == 0) {
         <!-- checkout txt -->
         <div class="checkout-container">
             <div class="leftside-container">
-                <form action="functions/func_checkout.php" method="post">
+                <form action="functions/func_checkout.php" method="post" enctype="multipart/form-data">
                     <div class="contact-information">
                         <h3>Contact Information</h3>
                         <div class="fname-lname">
@@ -137,12 +166,17 @@ if (mysqli_num_rows($Result) == 0) {
                 <div class="payment-method">
                     <h3>Payment Method</h3>
                     <div class="cod-payment">
-                        <input type="radio" name="payment" id="payment" class="payment" value="cod" required> <label for="cod">Cash on Delivery</label> <br>
+                        <input type="radio" name="payment" id="payment_cod" class="payment" value="cod" onclick="toggleGcashUpload()" required> <label for="payment_cod">Cash on Delivery</label> <br>
                     </div>
                     <div class="gcash-payment">
-                        <input type="radio" name="payment" id="payment" class="payment" value="gcash" required> <label for="gcash">GCASH</label>
+                        <input type="radio" name="payment" id="payment_gcash" class="payment" value="gcash" onclick="toggleGcashUpload()" required> <label for="payment_gcash">GCASH</label>
                     </div>
+                </div>
 
+                <div id="gcash-upload" style="display: none;">
+                    <img src="img/qr.png" alt="" style="height:50vh">
+                    <label for="gcashFile">Upload GCASH Payment Screenshot:</label>
+                    <input type="file" name="gcashFile" id="gcashFile" accept="image/*" required>
                 </div>
 
 

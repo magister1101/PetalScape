@@ -109,7 +109,7 @@
     </style>
     <?php
 
-    $query = "SELECT * FROM `products`";
+    $query = "SELECT * FROM `products` WHERE `archive` != '1'";
     $result = mysqli_query($conn, $query);
 
     ?>
@@ -170,7 +170,7 @@
                     $search_query = $_GET['search'];
                     $search_query = mysqli_real_escape_string($conn, $search_query);
 
-                    $query = "SELECT * FROM products WHERE name LIKE '%$search_query%' OR description LIKE '%$search_query%'";
+                    $query = "SELECT * FROM products WHERE (name LIKE '%$search_query%' OR description LIKE '%$search_query%') AND archive != '1'";
                     $result = $conn->query($query);
 
                     if ($result->num_rows > 0) {

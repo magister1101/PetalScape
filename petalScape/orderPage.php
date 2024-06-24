@@ -51,6 +51,7 @@
     //message
     $message = $rows['message'];
 
+    $receipt = $rows['receipt'];
 
     $accountId = $rows['accountId'];
 
@@ -134,7 +135,7 @@
                             <p>Status:<?php if ($status == 0) { ?>Waiting For Payment<?php } else if ($status == 1) { ?>Payment Accepted/To be ship<?php } else if ($status == 2) { ?>Out for delivery<?php } else if ($status == 3) { ?><br>
                             <p>Order Complete<?php } else { ?>Error<?php } ?></p>
                         </div>
-                      
+
                     </div>
                     <div class="delivery-info">
                         <h2>Deliver to</h2>
@@ -146,6 +147,16 @@
                     <h2>Note</h2>
                     <p><?php echo $message ?></p>
                 </div>
+
+                
+                <?php if ($mop == "gcash") { ?>
+                    <div class="qr">
+                        <h2>Payment Receipt:</h2>
+                        <img src="uploads/<?php echo $receipt ?>" alt="">
+                    </div>
+                <?php
+                }
+                ?>
             </div>
 
             <div class="product-total-cont">
@@ -162,9 +173,7 @@
                             <th>Proudct Id</th>
                             <th>Quantity</th>
                             <th>Total</th>
-
                         </tr>
-
 
                         <?php
                         $productNameInfo = $productRow['name'];
@@ -175,9 +184,7 @@
                         ?>
 
                         <tr class="product-info-cont">
-
                             <td><?php echo $productNameInfo ?></td>
-
                             <td><?php echo $productIdInfo ?></td>
                             <td><?php echo $quantity ?></td>
                             <td><?php echo $total ?></td>

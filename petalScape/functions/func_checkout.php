@@ -26,26 +26,44 @@ $message = addslashes($_POST['message']);
 // Get current date and time
 $orderDate = date('Y-m-d H:i:s');
 
-// Get cart items for the user
-$query = "SELECT * FROM `cart` WHERE accountId = $id";
-$result = mysqli_query($conn, $query);
+// Handle GCASH payment screenshot upload
+$gcashImage = null;
+if ($modeOfPayment == 'gcash') {
 
-if ($result && mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $productId = $row['productId'];
-        $quantity = $row['quantity'];
+    $gcashImage = $_FILES["gcashFile"]["name"];
+    $tempName = $_FILES["gcashFile"]["tmp_name"];
+    $folder = "../uploads/" . $gcashImage;
 
-        // Insert each item as a new row in the orders table
-        $orderQuery = "INSERT INTO `orders`(`accountId`, `productId`, `name`, `quantity`, `email`, `address`, `contactNumber`, `modeOfPayment`, `message`, `orderDate`) VALUES ('$id', '$productId', '$name', '$quantity', '$email', '$address', '$number', '$modeOfPayment', '$message', '$orderDate')";
-        mysqli_query($conn, $orderQuery);
+    if (!is_dir('../uploads')) {
+        mkdir('../uploads', 0755, true);
     }
-
-    // Clear the cart after placing the order
-    $clearCartQuery = "DELETE FROM `cart` WHERE accountId = $id";
-    mysqli_query($conn, $clearCartQuery);
-
-    echo "<script>location.href='../myCart_Customer.php?message=checkout'</script>";
-} else {
-    echo "Failed to retrieve cart items or cart is empty.";
 }
-?>
+
+
+
+if (move_uploaded_file($tempName, $folder)) {
+    // Insert data into the database
+    $query = "SELECT * FROM `cart` WHERE accountId = $id";
+    $result = mysqli_query($conn, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $productId = $row['productId'];
+            $quantity = $row['quantity'];
+
+            // Insert each item as a new row in the orders table
+            $orderQuery = "INSERT INTO `orders`(`accountId`, `productId`, `name`, `quantity`, `email`, `address`, `contactNumber`, `modeOfPayment`, `message`, `orderDate`, `receipt`) VALUES ('$id', '$productId', '$name', '$quantity', '$email', '$address', '$number', '$modeOfPayment', '$message', '$orderDate', '$gcashImage')";
+            mysqli_query($conn, $orderQuery);
+        }
+
+        // Clear the cart after placing the order
+        $clearCartQuery = "DELETE FROM `cart` WHERE accountId = $id";
+        mysqli_query($conn, $clearCartQuery);
+
+        echo "<script>location.href='../myCart_Customer.php?message=checkout'</script>";
+    } else {
+        echo "Failed to retrieve cart items or cart is empty.";
+    }
+}else{
+    echo "failed";
+}

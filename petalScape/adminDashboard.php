@@ -30,7 +30,16 @@
 
     // Calculate percentages
     $totalRevenuePercentage = ($totalOrders > 0) ? ($totalRevenue / $totalOrders) : 0;
-    $totalOrdersPercentage = ($totalUsers > 0) ? ($totalOrders / $totalUsers) : 0;
+    $totalOrdersPercentage = ($totalUsers > 0) ? ($totalOrders / $totalUsers) * 100 : 0;
+
+    // Fetch total income for each month
+    $monthlyIncomeQuery = "SELECT DATE_FORMAT(o.orderDate, '%M %Y') AS monthYear, SUM(o.quantity * p.price) AS monthlyIncome 
+                           FROM orders o
+                           JOIN products p ON o.productId = p.id
+                           WHERE o.status = 3
+                           GROUP BY DATE_FORMAT(o.orderDate, '%Y-%m')
+                           ORDER BY o.orderDate";
+    $monthlyIncomeResult = mysqli_query($conn, $monthlyIncomeQuery);
 
     $recentOrdersQuery = "SELECT o.id, p.name AS product, o.quantity, DATE_FORMAT(o.orderDate, '%M %d, %Y') AS orderDate, o.status 
                           FROM orders o 
@@ -39,6 +48,13 @@
                           LIMIT 5";
     $recentOrdersResult = mysqli_query($conn, $recentOrdersQuery);
 
+    //fetch needed data for the chart of monthly income
+    $months = [];
+    $incomes = [];
+    while ($monthlyIncomeRow = mysqli_fetch_assoc($monthlyIncomeResult)) {
+        $months[] = $monthlyIncomeRow['monthYear'];
+        $incomes[] = $monthlyIncomeRow['monthlyIncome'];
+    }
     ?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,6 +63,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecommerce</title>
     <link rel="stylesheet" href="css/admindashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -82,7 +99,47 @@
                 </div>
 
                 <div class="total-income">
-                    <!-- Add content for total income here -->
+                    <h2>Total Income by Month</h2>
+                    <canvas id="incomeChart"></canvas>
+                    <script>
+                        var ctx = document.getElementById('incomeChart').getContext('2d');
+                        var incomeChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: <?php echo json_encode($months); ?>,
+                                datasets: [{
+                                    label: 'Total Income (PHP)',
+                                    data: <?php echo json_encode($incomes); ?>,
+                                    borderColor: 'rgba(75, 192, 192, 1)',
+                                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                    borderWidth: 1,
+                                    fill: true
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                scales: {
+                                    y: {
+                                        beginAtZero: true,
+                                        ticks: {
+                                            callback: function(value) {
+                                                return 'PHP ' + value.toLocaleString();
+                                            }
+                                        }
+                                    }
+                                },
+                                plugins: {
+                                    tooltip: {
+                                        callbacks: {
+                                            label: function(context) {
+                                                return 'PHP ' + context.parsed.y.toLocaleString();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    </script>
                 </div>
 
                 <div class="best-sellers">
