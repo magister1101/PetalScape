@@ -120,6 +120,7 @@
   background-color: #F5F5F5;
   min-height: 100vh;
   width: 75%;
+  overflow-y: hidden;
 }
 
 .dashboard-txt {
@@ -251,6 +252,15 @@
   font-style: normal;
   font-size: 20px;
   color: #61AE4C;
+}
+
+.total-income{
+  margin-top: 2%;
+  width: 35%;
+  margin-left: 2%;
+  padding: 3%;
+  background-color: #FFFFFF;
+  border-radius: 30px;
 }
 
 .recent-orders {

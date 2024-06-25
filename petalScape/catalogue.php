@@ -119,9 +119,7 @@
 
 
     <div class="header-nav">
-        <?php
-        include 'constants/navbar.php'
-        ?>
+        
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 const alertBox = document.querySelector('.alert');
@@ -138,8 +136,11 @@
 
         <?php
         if ($_GET['message'] == 'addToCart') {
-            echo '<div class="alert" style="background-color: #61ae4c;">Added to cart.</div>';
+            echo '<div class="alert" style="background-color: #61ae4c;font-family:Poppins,San-Serif;padding-left:5%;height:3%;padding-top:.3%;color:#FFFFFF;">Added to cart.</div>';
         }
+        ?>
+        <?php
+        include 'constants/navbar.php'
         ?>
     </div>
     <div class="circle">

@@ -65,9 +65,9 @@
 <body>
     <?php
     if ($_GET['message'] == 'no_items') {
-        echo '<div class="alert" style="background-color: #f44336;">No items in cart.</div>';
+        echo '<div class="alert" style="background-color: #f44336;font-family:Poppins,San-Serif;padding-left:5%;padding-top:.5%;color:#FFFFFF;">No items in cart.</div>';
     } else if ($_GET['message'] == 'checkout') {
-        echo '<div class="alert" style="background-color: #61ae4c;">Item Ordered.</div>';
+        echo '<div class="alert" style="background-color: #61ae4c;font-family:Poppins,San-Serif;padding-left:5%;padding-top:.5%;color:#FFFFFF;">Item Ordered.</div>';
     }
     ?>
     <div class="container">
