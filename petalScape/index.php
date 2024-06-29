@@ -102,7 +102,7 @@
                         <div class="sample-flower-text">
                             <h1>Mint and Honey</h1>
                             <p>Vibrant green flowers adds elegance and freshness to<br> anyone’s eyes, perfect for brightening up your day.</p>
-                            <h1>P 1,899</h1>
+                            <h1>₱ 1,899</h1>
                         </div>                       
                 </div>
         </div>

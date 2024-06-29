@@ -175,7 +175,7 @@
                 <div class="price-select">
                     <label>PRICE:</label><br>
                     <select name="price" id="price">
-                        <option value="allPrices">all Prices</option>
+                        <option value="allPrices">All Prices</option>
                         <option value="0-100">0 - 100 PHP</option>
                         <option value="101-200">101 - 200 PHP</option>
                         <option value="201-300">201 - 300 PHP</option>
