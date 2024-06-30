@@ -6,6 +6,11 @@
     error_reporting(0);
     session_start();
     include 'constants/config.php';
+
+    if (!isset($_SESSION['id'])) {
+        echo "<script>location.href='login.php'</script>";
+    }
+
     ?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +26,7 @@
             background-size: cover;
             position: relative;
             height: 260px;
-        
+
 
         }
 
@@ -71,12 +76,12 @@
     }
     ?>
     <div class="container">
-        
+
         <div class="nav-header">
             <!-- container with navbar -->
             <?php
-        include 'constants/navbar.php'
-        ?>
+            include 'constants/navbar.php'
+            ?>
         </div>
 
         <div class="myCart-container">
@@ -181,60 +186,60 @@
 
 
     </div>
-    
-<footer>
-    <hr>
-    <div class="contact-info">
-        <div class="phone-info">
-            <img src="img/phone.png">
-            <div class="contact-text">
-                <H1>Contact us</H1>
-                <p>0915 670 0925</p>
-            </div>
 
-        </div>
-        <div class="email-info">
-            <img src="img/email.png">
-            <div class="email-text">
-                <H1>Email us</H1>
-                <p>petalscape@gmail.com</p>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="petalscape-info">
-        <div class="footer-logo">
-            <h1>Petalscape</h1>
-            <img src="img/Logo.png">
+    <footer>
+        <hr>
+        <div class="contact-info">
+            <div class="phone-info">
+                <img src="img/phone.png">
+                <div class="contact-text">
+                    <H1>Contact us</H1>
+                    <p>0915 670 0925</p>
+                </div>
 
-            <div class="footer-icons">
-                <p>Get in touch</p>
-                <img src="img/facebook.png">
-                <img src="img/insta.png">
+            </div>
+            <div class="email-info">
+                <img src="img/email.png">
+                <div class="email-text">
+                    <H1>Email us</H1>
+                    <p>petalscape@gmail.com</p>
+                </div>
             </div>
         </div>
+        <hr>
+        <div class="petalscape-info">
+            <div class="footer-logo">
+                <h1>Petalscape</h1>
+                <img src="img/Logo.png">
 
-        <div class="location-footer">
-            <h1>Location</h1>
-            <p>Bacoor, Cavite <br>Philippines</p>
-            <div class="office-hour-footer">
-                <h1>Office Hours</h1>
-                <p>Monday to Saturday<br>8:00am - 6:00pm</p>
+                <div class="footer-icons">
+                    <p>Get in touch</p>
+                    <img src="img/facebook.png">
+                    <img src="img/insta.png">
+                </div>
+            </div>
+
+            <div class="location-footer">
+                <h1>Location</h1>
+                <p>Bacoor, Cavite <br>Philippines</p>
+                <div class="office-hour-footer">
+                    <h1>Office Hours</h1>
+                    <p>Monday to Saturday<br>8:00am - 6:00pm</p>
+                </div>
+            </div>
+
+            <div class="legal-info-footer">
+                <h1>Legal information</h1>
+                <p>Delivery Information</p>
+                <p>Privacy/ Policy</p>
+                <p>Terms & conditions</p>
             </div>
         </div>
-
-        <div class="legal-info-footer">
-            <h1>Legal information</h1>
-            <p>Delivery Information</p>
-            <p>Privacy/ Policy</p>
-            <p>Terms & conditions</p>
+        <hr>
+        <div class="rights-reserved">
+            <p>© 2024. Petalscape PH. All Rights Reserved.</p>
         </div>
-    </div>
-    <hr>
-    <div class="rights-reserved">
-        <p>© 2024. Petalscape PH. All Rights Reserved.</p>
-    </div>
-</footer>
+    </footer>
 </body>
 
 

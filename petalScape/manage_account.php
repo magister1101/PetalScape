@@ -1,5 +1,5 @@
-
 <!DOCTYPE html>
+
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +13,7 @@
 <body>
     <?php
     include 'constants/config.php';
+    error_reporting(0);
 
     // Fetch user details from database
     $id = $_SESSION['id'];
@@ -25,46 +26,57 @@
         <div class="manage-acc-txt">
             <h2>Manage Account</h2>
         </div>
-       
+
         <form action="functions/func_updateAccount.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?php echo $rows['id']; ?>">
-        <div class="manage-info-cont">
-            <div class="fname-lname-uname-pass-email-num-cont">
-                <label for="firstName">First Name</label>
-                <input type="text" name="firstName" id="firstName" value="<?php echo $rows['firstName']; ?>" required> <br>
+            <div class="manage-info-cont">
+                <div class="fname-lname-uname-pass-email-num-cont">
+                    <label for="firstName">First Name</label>
+                    <input type="text" name="firstName" id="firstName" value="<?php echo $rows['firstName']; ?>" required> <br>
 
-                <label for="lastName">Last Name</label>
-                <input type="text" name="lastName" id="lastName" value="<?php echo $rows['lastName']; ?>" required> <br>
+                    <label for="lastName">Last Name</label>
+                    <input type="text" name="lastName" id="lastName" value="<?php echo $rows['lastName']; ?>" required> <br>
 
-                <label for="userName">Username</label>
-                <input type="text" name="userName" id="userName" value="<?php echo $rows['userName']; ?>" required> <br>
+                    <label for="userName">Username</label>
+                    <input type="text" name="userName" id="userName" value="<?php echo $rows['userName']; ?>" required> <br>
 
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password"> <br>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password"> <br>
 
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" value="<?php echo $rows['email']; ?>" required> <br>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" value="<?php echo $rows['email']; ?>" required> <br>
 
-                <label for="contactNumber">Contact Number</label>
-                <input type="text" name="contactNumber" id="contactNumber" value="<?php echo $rows['contactNumber']; ?>" required> <br>
-            </div>
-           
-            <div class="address-propic-cont">
-                <label for="address">Address</label>
-                <input  type="text" name="address" id="address" value="<?php echo $rows['address']; ?>" required><br>
-
-                <label for="img">Profile Picture</label>
-                <div class="input-file-profile">
-                    <input type="file" name="img" id="img"> <br>
+                    <label for="contactNumber">Contact Number</label>
+                    <input type="text" name="contactNumber" id="contactNumber" value="<?php echo $rows['contactNumber']; ?>" required> <br>
                 </div>
 
-                <div class="submit-btn">
-                    <input type="submit" value="Update Account"> 
+                <div class="address-propic-cont">
+                    <label for="address">Address</label>
+                    <input type="text" name="address" id="address" value="<?php echo $rows['address']; ?>" required><br>
+
+                    <label for="img">Profile Picture</label>
+                    <div class="input-file-profile">
+                        <input type="file" name="img" id="img"> <br>
+                    </div>
+
+                    <div class="submit-btn">
+                        <input type="submit" value="Update Account">
+                    </div>
+
                 </div>
-                
             </div>
-        </div>
-           
+
         </form>
     </div>
+    <script>
+        document.getElementById('password').addEventListener('input', function() {
+            if (this.value.includes(' ')) {
+                this.setCustomValidity('Password must not contain spaces');
+            } else if (this.value.length < 8) {
+                this.setCustomValidity('Password must be at least 8 characters long');
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+    </script>
 </body>

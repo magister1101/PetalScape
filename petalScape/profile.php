@@ -3,7 +3,7 @@
 
 <head>
     <?php
-    #error_reporting(0);
+    error_reporting(0);
     session_start();
     include 'constants/config.php';
 
@@ -67,6 +67,25 @@
 </head>
 
 <body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const alertBox = document.querySelector('.alert');
+            if (alertBox) {
+                setTimeout(() => {
+                    alertBox.classList.add('fade-out');
+                }, 3000);
+                setTimeout(() => {
+                    alertBox.remove();
+                }, 3500);
+            }
+        });
+    </script>
+
+    <?php
+    if ($_GET['message'] == 'account-updated') {
+        echo '<div class="alert" style="background-color: #61ae4c;font-family:Poppins,San-Serif;padding-left:5%;height:3%;padding-top:.3%;color:#FFFFFF;">Account Updated Successfully</div>';
+    }
+    ?>  
     <div class="main-container">
         <div class="nav-header">
             <?php include 'constants/navbar.php'; ?>
@@ -132,59 +151,59 @@
         <div class="div"></div>
     </div>
     <footer>
-    <hr>
-    <div class="contact-info">
-        <div class="phone-info">
+        <hr>
+        <div class="contact-info">
+            <div class="phone-info">
 
-            <img src="img/phone.png">
-            <div class="contact-text">
-                <H1>Contact us</H1>
-                <p>0915 670 0925</p>
+                <img src="img/phone.png">
+                <div class="contact-text">
+                    <H1>Contact us</H1>
+                    <p>0915 670 0925</p>
+                </div>
+
             </div>
-
-        </div>
-        <div class="email-info">
-            <img src="img/email.png">
-            <div class="email-text">
-                <H1>Email us</H1>
-                <p>petalscape@gmail.com</p>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="petalscape-info">
-        <div class="footer-logo">
-            <h1>Petalscape</h1>
-            <img src="img/Logo.png">
-
-            <div class="footer-icons">
-                <p>Get in touch</p>
-                <img src="img/facebook.png">
-                <img src="img/insta.png">
+            <div class="email-info">
+                <img src="img/email.png">
+                <div class="email-text">
+                    <H1>Email us</H1>
+                    <p>petalscape@gmail.com</p>
+                </div>
             </div>
         </div>
+        <hr>
+        <div class="petalscape-info">
+            <div class="footer-logo">
+                <h1>Petalscape</h1>
+                <img src="img/Logo.png">
 
-        <div class="location-footer">
-            <h1>Location</h1>
-            <p>Bacoor, Cavite <br>Philippines</p>
-            <div class="office-hour-footer">
-                <h1>Office Hours</h1>
-                <p>Monday to Saturday<br>8:00am - 6:00pm</p>
+                <div class="footer-icons">
+                    <p>Get in touch</p>
+                    <img src="img/facebook.png">
+                    <img src="img/insta.png">
+                </div>
+            </div>
+
+            <div class="location-footer">
+                <h1>Location</h1>
+                <p>Bacoor, Cavite <br>Philippines</p>
+                <div class="office-hour-footer">
+                    <h1>Office Hours</h1>
+                    <p>Monday to Saturday<br>8:00am - 6:00pm</p>
+                </div>
+            </div>
+
+            <div class="legal-info-footer">
+                <h1>Legal information</h1>
+                <p>Delivery Information</p>
+                <p>Privacy/ Policy</p>
+                <p>Terms & conditions</p>
             </div>
         </div>
-
-        <div class="legal-info-footer">
-            <h1>Legal information</h1>
-            <p>Delivery Information</p>
-            <p>Privacy/ Policy</p>
-            <p>Terms & conditions</p>
+        <hr>
+        <div class="rights-reserved">
+            <p>© 2024. Petalscape PH. All Rights Reserved.</p>
         </div>
-    </div>
-    <hr>
-    <div class="rights-reserved">
-        <p>© 2024. Petalscape PH. All Rights Reserved.</p>
-    </div>
-</footer>
+    </footer>
 </body>
 
 

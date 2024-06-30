@@ -32,8 +32,7 @@ if (isset($_POST['id'])) {
     }
 
     if (mysqli_query($conn, $query)) {
-        echo "<script>alert('Account updated successfully');</script>";
-        echo "<script>location.href='../profile.php?section=manage-account';</script>";
+        echo "<script>location.href='../profile.php?section=manage-account&message=account-updated';</script>";
     } else {
         echo "Error: " . $query . "<br>" . mysqli_error($conn);
     }

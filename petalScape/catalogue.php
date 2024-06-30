@@ -119,7 +119,7 @@
 
 
     <div class="header-nav">
-        
+
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 const alertBox = document.querySelector('.alert');
@@ -166,7 +166,9 @@
                         <option value="allCategories">All Categories</option>
                         <?php
                         while ($categoryRows = mysqli_fetch_assoc($categoryResults)) {
-                            echo '<option value="' . $categoryRows['name'] . '">' . $categoryRows['name'] . '</option>';
+                            if ($categoryRows['name'] !== "No category") {
+                                echo '<option value="' . $categoryRows['name'] . '">' . $categoryRows['name'] . '</option>';
+                            }
                         }
                         ?>
                     </select>
@@ -176,12 +178,10 @@
                     <label>PRICE:</label><br>
                     <select name="price" id="price">
                         <option value="allPrices">All Prices</option>
-                        <option value="0-100">0 - 100 PHP</option>
-                        <option value="101-200">101 - 200 PHP</option>
-                        <option value="201-300">201 - 300 PHP</option>
-                        <option value="301-400">301 - 400 PHP</option>
-                        <option value="401-500">401 - 500 PHP</option>
-                        <option value="1000+">1000+ PHP</option>
+                        <option value="0-500">0 - 500 PHP</option>
+                        <option value="501-1000">501 - 1000 PHP</option>
+                        <option value="1001-2000">1001 - 2000 PHP</option>
+                        <option value="2001-1000000">2001+ PHP</option>
                     </select>
                 </div>
             </div>

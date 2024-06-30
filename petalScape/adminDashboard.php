@@ -4,6 +4,7 @@
 <head>
     <?php
     session_start();
+    error_reporting(0);
     include 'constants/config.php';
     include_once 'functions/func_adminCheck.php';
 

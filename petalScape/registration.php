@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/registration.css">
 </head>
 
-<body background="img/bg.png"> 
+<body background="img/bg.png">
     <div class="sign-up-cont">
         <div class="sign-up-top-left">
             <p>Welcome to <span>Petalscape</span></p>
@@ -28,43 +28,43 @@
             </div>
         </div>
         <div class="sign-in-text">
-                        <p>Sign up</p>
-                    </div>
+            <p>Sign up</p>
+        </div>
         <form action="functions/func_registration.php" method="post" enctype="multipart/form-data"> <br>
 
-        <div class="left-form">
-            <label for="firstName">First Name</label> <br>
-            <input type="text" name="firstName" id="firstName" required> <br><br>
-            <label for="lastName">Last Name</label> <br>
-            <input type="text" name="lastName" id="lastName" required> <br><br>
-            <label for="userName">User Name</label> <br>
-            <input type="text" name="userName" id="userName" required> <br><br>
-            <label for="email">Email</label> <br>
-            <input type="email" name="email" id="email" required> <br>
-          
-        </div>
-        <div class="right-form">
-     
-            <label for="password">Password</label> <br>
-            <input type="password" name="password" id="password" required> <br><br>
-            <label for="contactNumber">Contact Number</label> <br>
-            <input type="number" name="contactNumber" id="contactNumber" required> <br><br>
-            <label for="address">Address</label> <br>
-            <input type="text" name="address" id="address" required> <br><br>
-           
-        </div>
-        <div class="add-img">
-            <label for="image">Add Image</label><br>
-            <input type="file" name="image" id="image" required><br>
-        </div>
-        
-        <div class="register-btn">
-            <input type="submit" value="Sign up">
-        </div>
-           
-        </form> 
+            <div class="left-form">
+                <label for="firstName">First Name</label> <br>
+                <input type="text" name="firstName" id="firstName" required> <br><br>
+                <label for="lastName">Last Name</label> <br>
+                <input type="text" name="lastName" id="lastName" required> <br><br>
+                <label for="userName">User Name</label> <br>
+                <input type="text" name="userName" id="userName" required> <br><br>
+                <label for="email">Email</label> <br>
+                <input type="email" name="email" id="email" required> <br>
+
+            </div>
+            <div class="right-form">
+
+                <label for="password">Password</label> <br>
+                <input type="password" name="password" id="password" required> <br><br>
+                <label for="contactNumber">Contact Number</label> <br>
+                <input type="number" name="contactNumber" id="contactNumber" required> <br><br>
+                <label for="address">Address</label> <br>
+                <input type="text" name="address" id="address" required> <br><br>
+
+            </div>
+            <div class="add-img">
+                <label for="image">Add Image</label><br>
+                <input type="file" name="image" id="image" required><br>
+            </div>
+
+            <div class="register-btn">
+                <input type="submit" value="Sign up">
+            </div>
+
+        </form>
     </div>
-        <!-- flower images -->
+    <!-- flower images -->
     <div class="sign-up-img">
         <div class="img-flower">
             <img src="img/bg-flower.png">
@@ -76,8 +76,19 @@
         <div class="bg-txt">
             <p>Tiny worlds, blooming big.</p>
         </div>
-        
+
     </div>
+    <script>
+        document.getElementById('password').addEventListener('input', function() {
+            if (this.value.includes(' ')) {
+                this.setCustomValidity('Password must not contain spaces');
+            } else if (this.value.length < 8) {
+                this.setCustomValidity('Password must be at least 8 characters long');
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+    </script>
 </body>
 
 </html>

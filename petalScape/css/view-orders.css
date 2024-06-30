@@ -124,11 +124,6 @@
     width: 100%;
 }
 
-.order-list-txt{
-
-}
-
-
 .order-list-txt h2{
     color: #FC8E8D;
     font-family: "Poppins", sans-serif;
@@ -147,13 +142,13 @@
     flex: 1;
     padding: 10px;
     text-align: center;
-    background-color: #f1f1f1;
+    background-color: #dbe8c9;
     border: 1px solid #ccc;
     margin-right: 2px;
 }
 
 .tab.active {
-    background-color: #ccc;
+    background-color: #becfa6;
 }
 
 .tab-content {

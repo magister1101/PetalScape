@@ -64,7 +64,7 @@ if (mysqli_num_rows($Result) == 0) {
 
             if (paymentMethod === 'gcash') {
                 var gcashFile = document.getElementById('gcashFile').files[0];
-                if (!gcashFile) { 
+                if (!gcashFile) {
                     alert('Please upload a GCASH payment screenshot.');
                     return;
                 }
@@ -84,6 +84,20 @@ if (mysqli_num_rows($Result) == 0) {
         }
     </script>
 
+    <script>
+        function validateZipCode() {
+            const zipInput = document.getElementById('zip');
+            const zipValue = zipInput.value;
+            const zipPattern = /^\d{4}$/;
+
+            if (!zipPattern.test(zipValue)) {
+                alert("ZIP code must be exactly 4 digits");
+                zipInput.value = ''; 
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 
 <body>
@@ -104,7 +118,7 @@ if (mysqli_num_rows($Result) == 0) {
         <!-- checkout txt -->
         <div class="checkout-container">
             <div class="leftside-container">
-                <form action="functions/func_checkout.php" method="post" enctype="multipart/form-data">
+                <form action="functions/func_checkout.php" method="post" enctype="multipart/form-data" onsubmit="return validateZipCode()">
                     <div class="contact-information">
                         <h3>Contact Information</h3>
                         <div class="fname-lname">
@@ -178,12 +192,12 @@ if (mysqli_num_rows($Result) == 0) {
                         <div class="gcash-img">
                             <img src="img/qr3.jpg" alt="">
                         </div>
-                        
+
                         <div class="gcash-label-input">
                             <label for="gcashFile">Upload GCASH Payment Screenshot:</label>
                             <input type="file" name="gcashFile" id="gcashFile" accept="image/*">
                         </div>
-                    </div>    
+                    </div>
                 </div>
 
 

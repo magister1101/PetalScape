@@ -42,7 +42,7 @@
 
 
                 <div class="top-cont-left">
-                    <p>Welcome to <span style="color: #61AE4C" ;>Petalscape</span></p>
+                    <p>Welcome to <a href="index.php" style="text-decoration: none;"><span style="color: #61AE4C" ;>Petalscape</span></p></a>
 
 
                     <div class="top-cont-right">
@@ -67,9 +67,9 @@
                         <label for="userName">Enter your Password</label> <br>
                         <input type="password" name="password" id="password" required placeholder="Password"> <br>
                     </div>
-                    <div class="forgot-pass">
+                    <!-- <div class="forgot-pass">
                         <a href="#">Forgot Password</a>
-                    </div>
+                    </div> -->
                     <br>
                     <div class="sign-in-btn">
                         <input type="submit" value="Sign in">

@@ -4,6 +4,7 @@
 <head>
     <?php
     include 'constants/config.php';
+    error_reporting(0);
     ?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +20,6 @@
 
     ?>
     <style>
-     
         
       
     </style>
