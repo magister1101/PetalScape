@@ -117,6 +117,10 @@
     <!-- <h1>Our Top Selling</h1> 
     <a href="catalogue.php">See more</a> -->
     </div>
+
+    <?php
+    include 'constants/livechat.php';
+    ?>
   
     <footer>
     <hr>

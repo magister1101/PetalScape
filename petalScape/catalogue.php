@@ -317,7 +317,10 @@
         <img class="popup-content" id="popupImg">
     </div>
 
-
+    <?php
+    include 'constants/livechat.php';
+    ?>
+    
     <footer>
         <hr>
         <div class="contact-info">
