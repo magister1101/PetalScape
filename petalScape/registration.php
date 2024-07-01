@@ -55,7 +55,7 @@
             </div>
             <div class="add-img">
                 <label for="image">Add Image</label><br>
-                <input type="file" name="image" id="image" required><br>
+                <input type="file" name="image" id="image"><br>
             </div>
 
             <div class="register-btn">
