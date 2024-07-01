@@ -264,7 +264,7 @@
 }
 
 .recent-orders {
-  margin-top: 3%;
+  margin-top: 1%;
   width: 93%;
   margin-left: 2%;
   background-color: #FFFFFF;
@@ -344,4 +344,5 @@ td {
 
 .total-income{
   height: 30%;
+  margin-top: 1%;
 }

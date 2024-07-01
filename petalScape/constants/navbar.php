@@ -19,17 +19,24 @@
             border: 1px solid #ccc;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
+            
         }
 
         .notification-window ul {
             list-style: none;
             margin: 0;
             padding: 0;
+            color: #6C7275;
+            font-family: "Poppins", sans-serif;
+            font-weight: 500;
+          
+            font-style: normal;
         }
 
         .notification-window li {
             padding: 10px;
             border-bottom: 1px solid #eee;
+           
         }
 
         .notification-window li:last-child {
@@ -149,13 +156,17 @@
 
         <div class="navbar-img">
             <div class="notification-button">
-                <img src="img/notification.png">
+                <img src="img/bell.png">
                 <div class="notification-window">
                     <a href="profile.php?section=view-orders" style="text-decoration: none;"><ul class="notification-list"></ul></a>
                 </div>
             </div>
+            <div class="cart-NumberofItems">
             <div class="itemsInCart"></div>
             <a href="myCart_Customer.php"><img class="cart" src="img/cart.png"></a>
+            
+            </div>
+            
             <a href="functions/func_profile.php"><img src="img/profile.png"></a>
 
         </div>
