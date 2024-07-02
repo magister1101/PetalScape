@@ -156,9 +156,17 @@
             </form>
         </div>
 
+
         <div class="navbar-img">
             <div class="notification-button">
-                <img src="img/bell.png">
+                <?php
+                if ($_SESSION['id'] != 1) {
+                ?>
+                    <img src="img/bell.png">
+
+                <?php
+                }
+                ?>
                 <div class="notification-window">
                     <a href="profile.php?section=view-orders" style="text-decoration: none;">
                         <ul class="notification-list"></ul>
@@ -166,8 +174,14 @@
                 </div>
             </div>
             <div class="cart-NumberofItems">
-                <div class="itemsInCart"></div>
-                <a href="myCart_Customer.php"><img class="cart" src="img/cart.png"></a>
+                <?php
+                if ($_SESSION['id'] != 1) {
+                ?>
+                    <div class="itemsInCart"></div>
+                    <a href="myCart_Customer.php"><img class="cart" src="img/cart.png"></a>
+                <?php
+                }
+                ?>
 
             </div>
 

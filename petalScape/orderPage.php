@@ -142,22 +142,33 @@
                         <p>Address: <?php echo $address ?></p>
                     </div>
                 </div>
-                
+
                 <div class="message-qr-cont">
-                        <div class="message">
-                            <h2>Note</h2>
-                            <p><?php echo $message ?></p>
-                        </div> 
-                        <?php if ($mop == "gcash") { ?>
-                            <div class="qr-cont">
-                                <h2>Payment Receipt:</h2>
+                    <div class="message">
+                        <h2>Note</h2>
+                        <p><?php echo $message ?></p>
+                    </div>
+                    <?php if ($mop == "gcash") { ?>
+                        <div class="qr-cont">
+                            <h2>Payment Receipt:</h2>
+                            <?php
+                            if ($receipt == '') {
+                            ?>
+                                <h2> No Receipt</h2>
+                            <?php
+                            } else {
+                            ?>
                                 <img src="uploads/<?php echo $receipt ?>" alt="">
-                            </div>
-                        <?php
-                        }
-                        ?>
+
+                            <?php
+                            }
+                            ?>
+                        </div>
+                    <?php
+                    }
+                    ?>
                 </div>
-              
+
             </div>
 
             <div class="product-total-cont">

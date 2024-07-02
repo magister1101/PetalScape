@@ -18,7 +18,7 @@
 
     <?php
 
-    $query = "SELECT * FROM `orders`";
+    $query = "SELECT * FROM `orders` order by id desc";
     $result = mysqli_query($conn, $query);
 
 

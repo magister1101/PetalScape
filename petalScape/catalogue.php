@@ -221,7 +221,9 @@
                             echo "<input type='text' name='itemId' id='itemId' value='$id' hidden>";
                             echo "<input type='text' name='quantity' id='quantity' value='1' hidden>";
                             echo "<div class='cartImg'>";
+                            if ($_SESSION['id'] != 1) {
                             echo "<input type='image' src='img/cart.png' value='add to cart'>";
+                            }
                             echo "</div>";
                             echo "</form>";
                             echo "</div>";
@@ -254,7 +256,9 @@
                         echo "<input type='text' name='itemId' id='itemId' value='$id' hidden>";
                         echo "<input type='text' name='quantity' id='quantity' value='1' hidden>";
                         echo "<div class='cartImg'>";
+                        if ($_SESSION['id'] != 1) {
                         echo "<input type='image' src='img/cart.png' value='add to cart'>";
+                        }
                         echo "</div>";
                         echo "</form>";
                         echo "</div>";
