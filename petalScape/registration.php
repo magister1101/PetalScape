@@ -54,7 +54,7 @@
 
             </div>
             <div class="add-img">
-                <label for="image">Add Image</label><br>
+                <label for="image">Add Profile Picture</label><br>
                 <input type="file" name="image" id="image"><br>
             </div>
 
