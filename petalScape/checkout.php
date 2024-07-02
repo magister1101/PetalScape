@@ -12,6 +12,12 @@ $userId = $_SESSION['id'];
 $Query = "SELECT * FROM `cart` WHERE `accountId` = '$userId'";
 $Result = mysqli_query($conn, $Query);
 
+
+$accountDetailsQuery = "SELECT * FROM `accounts` where `id` = '$userId'";
+$accountDetailsResult = mysqli_query($conn, $accountDetailsQuery);
+$accountDetailsRows = mysqli_fetch_assoc($accountDetailsResult);
+
+
 if (mysqli_num_rows($Result) == 0) {
     header("Location: myCart_Customer.php?message=no_items");
     exit();
@@ -54,6 +60,7 @@ if (mysqli_num_rows($Result) == 0) {
             border: 1px solid #61AE4C;
             opacity: 30%;
         }
+        
     </style>
 
     <script>
@@ -92,7 +99,7 @@ if (mysqli_num_rows($Result) == 0) {
 
             if (!zipPattern.test(zipValue)) {
                 alert("ZIP code must be exactly 4 digits");
-                zipInput.value = ''; 
+                zipInput.value = '';
                 return false;
             }
             return true;
@@ -124,19 +131,19 @@ if (mysqli_num_rows($Result) == 0) {
                         <div class="fname-lname">
                             <div class="fname">
                                 <label for="fn">FIRST NAME</label>
-                                <input type="text" name="firstName" id="firstName" required> <br>
+                                <input type="text" name="firstName" id="firstName" value="<?php echo $accountDetailsRows['firstName'] ?>" required> <br>
                             </div>
                             <div class="lname">
                                 <label for="ln">LAST NAME</label>
-                                <input type="text" name="lastName" id="lastName" required> <br>
+                                <input type="text" name="lastName" id="lastName" value="<?php echo $accountDetailsRows['lastName'] ?>" required> <br>
                             </div>
                         </div>
 
                         <div class="phone-email">
                             <label for="num">PHONE NUMBER</label>
-                            <input type="number" name="phoneNumber" id="phoneNumber" required> <br>
+                            <input type="number" name="phoneNumber" id="phoneNumber" value="<?php echo $accountDetailsRows['contactNumber'] ?>" required> <br>
                             <label for="email">EMAIL ADDRESS</label>
-                            <input type="email" name="email" id="email" required>
+                            <input type="email" name="email" id="email" value="<?php echo $accountDetailsRows['email'] ?>" required>
                         </div>
 
                     </div>
